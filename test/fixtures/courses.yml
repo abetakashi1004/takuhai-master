@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  post_code_id: 1
+  sales_office_id: 1
+  course_name: MyString
+
+two:
+  post_code_id: 1
+  sales_office_id: 1
+  course_name: MyString

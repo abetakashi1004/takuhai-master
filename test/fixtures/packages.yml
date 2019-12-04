@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shipper_id: 1
+  product_name_id: 1
+  postcode_id: 1
+  time_zone_id: 1
+  phone_number_id: 1
+  size_id: 1
+  slip_number: 1
+  destination: MyString
+  address: MyString
+  delivery_date: 2019-12-04
+  absence: false
+  complete: false
+
+two:
+  shipper_id: 1
+  product_name_id: 1
+  postcode_id: 1
+  time_zone_id: 1
+  phone_number_id: 1
+  size_id: 1
+  slip_number: 1
+  destination: MyString
+  address: MyString
+  delivery_date: 2019-12-04
+  absence: false
+  complete: false

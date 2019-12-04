@@ -1,0 +1,2 @@
+class Redelivery < ApplicationRecord
+end

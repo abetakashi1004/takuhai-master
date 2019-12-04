@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  enduser_id: 1
+  delivery_id: 1
+  comment: MyString
+
+two:
+  enduser_id: 1
+  delivery_id: 1
+  comment: MyString
