@@ -1,4 +1,6 @@
-class Publics::EndusersController < ApplicationController
+class Admins::DeliveryPeopleController < ApplicationController
+  def index
+  end
 
   def show
   end

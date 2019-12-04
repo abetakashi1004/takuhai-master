@@ -1,55 +1,8 @@
+
 Rails.application.routes.draw do
 
-  namespace :publics do
-    get 'deliveries/index'
-  end
-  namespace :publics do
-    get 'endusers/show'
-    get 'endusers/edit'
-  end
-  namespace :publics do
-    get 'change_dates/new'
-  end
-  namespace :publics do
-    get 'redeliveries/new'
-  end
-  namespace :publics do
-    get 'homes/index'
-    get 'homes/about'
-    get 'homes/plus'
-  end
-  namespace :drivers do
-    get 'delivery_people/show'
-  end
-  namespace :drivers do
-    get 'packages/show'
-  end
-  namespace :drivers do
-    get 'takeouts/new'
-    get 'takeouts/index'
-    get 'takeouts/complete'
-  end
-  namespace :drivers do
-    get 'deliveries/new'
-  end
-  namespace :drivers do
-    get 'today_courses/new'
-  end
-  namespace :admins do
-    get 'product_names/new'
-  end
-  namespace :admins do
-    get 'shippers/new'
-  end
-  namespace :admins do
-    get 'packages/new'
-    get 'packages/index'
-    get 'packages/show'
-    get 'packages/edit'
-  end
-  namespace :admins do
-    get 'homes/index'
-  end
+  root 'publics/homes#index'
+
   devise_for :delivery_people, controllers: {
   sessions:      'drivers/sessions',
   passwords:     'drivers/passwords',
@@ -65,5 +18,32 @@ Rails.application.routes.draw do
   passwords:     'publics/passwords',
   registrations: 'publics/registrations'
 }
+  scope module: :publics do
+    resources :deliveries, only: [:index]
+    resources :endusers, only:[:show, :edit, :update, :destroy]
+    resources :change_dates, only:[:new, :create]
+    resources :redeliveries, only:[:new, :create]
+    resources :homes, only:[:index]
+    get 'homes/about'
+    get 'homes/plus'
+  end
+
+  namespace :drivers do
+    resources :delivery_people, only:[:show]
+    resources :packages, only:[:show]
+    resources :takeouts,only:[:new, :create, :index, :update]
+    get 'takeouts/complete'
+    resources :deliveries, only:[:new, :create, :destroy]
+    resources :today_courses,only:[:new, :create]
+  end
+
+  namespace :admins do
+    resources :delivery_people, only:[:index, :show, :edit, :update, :destroy]
+    resources :product_names, only:[:new, :create]
+    resources :shippers, only:[:new, :create]
+    resources :packages,only:[:new, :create, :index, :show, :edit, :update, :destroy]
+    resources :homes, only:[:index]
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

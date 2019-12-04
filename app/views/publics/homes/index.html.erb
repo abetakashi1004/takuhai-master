@@ -1,2 +1,12 @@
-<h1>Publics::Homes#index</h1>
-<p>Find me in app/views/publics/homes/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<h2>ようこそ宅配マスターへ</h2>
+			<div><%= link_to "ログインせずに、荷物の再配達を依頼する", new_redelivery_path, class:'btn btn-default' %></div>
+			<div><%= link_to "ログインせずに荷物の配達時間を変更する", new_change_date_path, class:'btn btn-default' %></div>
+			<div><%= link_to "ログイン", enduser_session_path, class:'btn btn-default' %></div>
+			<div><%= link_to "会員登録", new_enduser_registration_path, class:'btn btn-default' %></div>
+			<h3>＼　会員登録するとより便利な機能が使えます！　／</h3>
+		</div>
+	</div>
+</div>
