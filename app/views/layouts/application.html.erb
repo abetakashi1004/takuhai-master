@@ -4,12 +4,63 @@
     <title>TakuhaiMaster</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/50e1df26d8.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
+    <header>
+
+    <% if enduser_signed_in? %>
+    <div class="app_title"><h1><%= link_to "宅配マスター", root_path %></h1></div>
+    <% elsif sales_office_signed_in? %>
+    <div class="app_title"><h1><%= link_to "宅配マスター", admins_homes_path %></h1></div>
+    <% elsif delivery_person_signed_in? %>
+    <h1>宅配マスター</h1>
+    <% else %>
+    <div class="app_title"><h1><%= link_to "宅配マスター", root_path %></h1></div>
+    <% end %>
+
+    <% if enduser_signed_in? %>
+      <h3><%= current_enduser.name %>さんがログインしています</h3>
+      <%= link_to"ログアウト",destroy_enduser_session_path,method: :delete %></li>
+
+    <% elsif sales_office_signed_in? %>
+      <h3>営業所がログインしています</h3>
+      <%= link_to"ログアウト",destroy_sales_office_session_path,method: :delete %></li>
+
+    <% elsif delivery_person_signed_in? %>
+      <h3>ドライバーがログインしています</h3>
+      <%= link_to"業務終了",destroy_delivery_person_session_path,method: :delete %></li>
+
+    <% else %>
+            <li class="nav-list-item"><%= link_to "ログイン", enduser_session_path %></li>
+            <li class="nav-list-item"><%= link_to "会員登録すると？", homes_plus_path %></li>
+            <li class="nav-list-item"><%= link_to "宅配マスターで何ができる？", homes_about_path %></li>
+    <% end %>
+
+    <%if request.original_url == 'http://localhost:3000/sales_offices/sign_in' %>
+          <style>
+          .nav-list-item{
+          display: none;
+          }
+          </style>
+      <% elsif request.original_url == 'http://localhost:3000/delivery_people/sign_in' %>
+          <style>
+          .nav-list-item{
+          display: none;
+          }
+          </style>
+    <% end %>
+    </header>
+
     <%= yield %>
+
   </body>
+  <footer>
+    <h3>フッター</h3>
+  </footer>
 </html>
+
+

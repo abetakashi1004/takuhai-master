@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  package_id: 1
+  time_zone_id: 1
+  delivery_date: 2019-12-04
+  check: false
+
+two:
+  package_id: 1
+  time_zone_id: 1
+  delivery_date: 2019-12-04
+  check: false

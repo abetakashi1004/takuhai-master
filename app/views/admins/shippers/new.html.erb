@@ -1,0 +1,19 @@
+
+<div class="container">
+	 <div class="row">
+		<div class="col">
+			<h1>荷主登録</h1>
+			<%= form_for(@shipper, url: admins_shippers_path) do |f| %>
+			<%= f.label :荷主名 %><br>
+			<div><%= f.text_field :shipper_name %></div>
+			<%= f.label :郵便番号 %><br>
+			<div><%= f.text_field :postcode %></div>
+			<%= f.label :住所 %><br>
+			<div><%= f.text_area :address %></div>
+			<%= f.label :電話番号 %><br>
+			<div><%= f.text_field :phone_number %></div>
+			<div><%= f.submit '荷主を登録', class: 'btn btn-primary submit_botton' %></div>
+			<% end %>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,2 @@
+module Publics::EndusersHelper
+end

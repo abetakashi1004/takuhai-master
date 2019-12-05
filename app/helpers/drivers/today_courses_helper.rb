@@ -1,0 +1,2 @@
+module Drivers::TodayCoursesHelper
+end
