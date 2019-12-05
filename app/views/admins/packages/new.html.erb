@@ -25,7 +25,11 @@
 					</tr>
 					<tr>
 						<th>電話番号</th>
-						<td></td>
+						<td>
+							  <%= f.fields_for :phone_number do |i| %>
+							  <%= i.text_field :phone_number %>
+							  <% end %>
+						</td>
 					</tr>
 					<tr>
 						<th>サイズ</th>

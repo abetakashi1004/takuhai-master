@@ -9,4 +9,5 @@ class Package < ApplicationRecord
 	has_many :redeliveries
 	has_many :deliveries
 	has_many :takeouts
+	accepts_nested_attributes_for :phone_number
 end
