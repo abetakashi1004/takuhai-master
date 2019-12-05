@@ -10,6 +10,7 @@ class Admins::PackagesController < ApplicationController
   end
 
   def index
+    @packages = Package.search(params[:search]).order(id: "DESC")
   end
 
   def show
@@ -22,6 +23,9 @@ class Admins::PackagesController < ApplicationController
   end
 
   def destroy
+    package = Package.find(params[:id])
+    package.destroy
+    redirect_to admins_packages_path
   end
 
 private

@@ -8,4 +8,12 @@ class Package < ApplicationRecord
 	has_many :redeliveries
 	has_many :deliveries
 	has_many :takeouts
+
+    def self.search(search)
+        if search
+            Package.where(['destination LIKE ?', "%#{search}%"])
+        else
+            Package.all
+        end
+    end
 end

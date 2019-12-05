@@ -23,12 +23,13 @@
     <% end %>
 
     <% if enduser_signed_in? %>
-      <h3><%= current_enduser.name %>さんがログインしています</h3>
-      <%= link_to"ログアウト",destroy_enduser_session_path,method: :delete %></li>
+      <li class="nav-list-item"><%= link_to"ログアウト",destroy_enduser_session_path,method: :delete %></li>
+      <li class="nav-list-item"><%= link_to"マイページ",enduser_path(current_enduser) %></li>
+      <span class="log_in_name"><%= current_enduser.name %>さんがログインしています</span>
 
     <% elsif sales_office_signed_in? %>
-      <h3>営業所がログインしています</h3>
-      <%= link_to"ログアウト",destroy_sales_office_session_path,method: :delete %></li>
+      <li class="nav-list-item"><%= link_to"ログアウト",destroy_sales_office_session_path,method: :delete %></li>
+      <span class="log_in_name">営業所がログインしています</span>
 
     <% elsif delivery_person_signed_in? %>
       <h3>ドライバーがログインしています</h3>
