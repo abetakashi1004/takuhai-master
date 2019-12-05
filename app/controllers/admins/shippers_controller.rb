@@ -7,7 +7,7 @@ class Admins::ShippersController < ApplicationController
   def create
   	shipper = Shipper.new(shipper_params)
   	shipper.save
-  	redirect_to new_admins_shipper_path
+  	redirect_to admins_homes_path
   end
 
 private

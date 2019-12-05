@@ -12,8 +12,15 @@
   <body>
     <header>
 
-    <div class="app_title"><h1>宅配マスター</h1></div>
-
+    <% if enduser_signed_in? %>
+    <div class="app_title"><h1><%= link_to "宅配マスター", root_path %></h1></div>
+    <% elsif sales_office_signed_in? %>
+    <div class="app_title"><h1><%= link_to "宅配マスター", admins_homes_path %></h1></div>
+    <% elsif delivery_person_signed_in? %>
+    <h1>宅配マスター</h1>
+    <% else %>
+    <div class="app_title"><h1><%= link_to "宅配マスター", root_path %></h1></div>
+    <% end %>
 
     <% if enduser_signed_in? %>
       <h3><%= current_enduser.name %>さんがログインしています</h3>
@@ -35,13 +42,13 @@
 
     <%if request.original_url == 'http://localhost:3000/sales_offices/sign_in' %>
           <style>
-          .nav-list{
+          .nav-list-item{
           display: none;
           }
           </style>
       <% elsif request.original_url == 'http://localhost:3000/delivery_people/sign_in' %>
           <style>
-          .nav-list{
+          .nav-list-item{
           display: none;
           }
           </style>
@@ -49,9 +56,10 @@
     </header>
 
     <%= yield %>
+
   </body>
   <footer>
-    <h3>フッターです</h3>
+    <h3>フッター</h3>
   </footer>
 </html>
 

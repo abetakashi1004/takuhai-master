@@ -40,7 +40,6 @@ body,
 .row{
     width:80% ;
 	padding: 30px 0;
-	background-color:#d3d3d3;
 	margin :0 auto;
 	height:630px;
 }
@@ -68,10 +67,17 @@ body,
 input[type="password"] {
 	width: 300px;
    }
+.address-place{
+	width:300px;
+}
 
 .sign_in_botton{
+	margin-top:10px;
+}
+.sign_up_botton{
 	margin-top:10px;
 }
 .sign_in_title{
 	margin :20px 0 ;
 }
+

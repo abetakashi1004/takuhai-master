@@ -1,5 +1,6 @@
 class Admins::PackagesController < ApplicationController
   def new
+    @package = Package.new
   end
 
   def create
@@ -19,4 +20,7 @@ class Admins::PackagesController < ApplicationController
 
   def destroy
   end
+
+
+
 end

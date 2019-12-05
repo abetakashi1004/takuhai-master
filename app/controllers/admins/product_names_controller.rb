@@ -7,7 +7,7 @@ class Admins::ProductNamesController < ApplicationController
   def create
   	product_name = ProductName.new(product_name_params)
   	product_name.save
-  	redirect_to new_admins_product_name_path
+  	redirect_to admins_homes_path
   end
 
 private

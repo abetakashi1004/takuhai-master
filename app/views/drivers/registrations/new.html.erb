@@ -1,6 +1,4 @@
 
-
-
 <div class="container">
   <div class="row">
     <div class="col">
@@ -8,6 +6,11 @@
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field">
+          <%= f.label :顔写真 %><br />
+          <%= f.text_field :name, autofocus: true%>
+        </div>
 
         <div class="field">
           <%= f.label :名前 %><br />
@@ -32,13 +35,12 @@
         <div class="field">
           <%= f.label :パスワード  %>
           <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password" %>
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "６桁以上で入力してください" %>
         </div>
 
         <div class="actions">
-          <%= f.submit "登録" %>
+          <%= f.submit "登録" , class: 'btn btn-primary sign_up_botton' %>
         </div>
       <% end %>
     </div>

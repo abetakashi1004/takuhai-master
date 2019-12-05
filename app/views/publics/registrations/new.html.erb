@@ -20,7 +20,7 @@
 
         <div class="field">
           <%= f.label :住所 %><br />
-          <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+          <%= f.text_area :address, autofocus: true, autocomplete: "address", class: 'address-place' %>
         </div>
 
         <div class="field">
@@ -37,11 +37,11 @@
           <%= f.label :パスワード %>
           <% if @minimum_password_length %>
           <% end %><br />
-          <%= f.password_field :password, placeholder: "6桁以上で入力してください", autocomplete: "new-password" %>
+          <%= f.password_field :password, placeholder: "６桁以上で入力してください", autocomplete: "new-password" %>
         </div>
 
         <div class="actions">
-          <%= f.submit "登録", class: 'btn btn-primary' %>
+          <%= f.submit "登録", class: 'btn btn-primary sign_up_botton' %>
         </div>
       <% end %>
     </div>
