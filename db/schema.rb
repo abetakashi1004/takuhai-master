@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_05_070440) do
+ActiveRecord::Schema.define(version: 2019_12_05_083538) do
 
   create_table "change_dates", force: :cascade do |t|
     t.integer "package_id"
@@ -68,7 +68,6 @@ ActiveRecord::Schema.define(version: 2019_12_05_070440) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "phone_number_id"
     t.string "name"
     t.integer "postcode"
     t.string "address"
@@ -76,6 +75,7 @@ ActiveRecord::Schema.define(version: 2019_12_05_070440) do
     t.integer "point"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "phone_number"
     t.index ["email"], name: "index_endusers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_endusers_on_reset_password_token", unique: true
   end
@@ -110,7 +110,6 @@ ActiveRecord::Schema.define(version: 2019_12_05_070440) do
     t.integer "product_name_id"
     t.integer "postcode_id"
     t.integer "time_zone_id"
-    t.integer "phone_number_id"
     t.integer "size_id"
     t.integer "slip_number"
     t.string "destination"
@@ -120,6 +119,7 @@ ActiveRecord::Schema.define(version: 2019_12_05_070440) do
     t.boolean "complete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "phone_number"
   end
 
   create_table "phone_numbers", force: :cascade do |t|
