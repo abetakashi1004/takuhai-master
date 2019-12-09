@@ -9,7 +9,7 @@
 
         <div class="field">
           <%= f.label :顔写真 %><br />
-          <%= f.text_field :name, autofocus: true%>
+          <%= f.attachment_field :face_photo %>
         </div>
 
         <div class="field">
@@ -24,7 +24,7 @@
 
         <div class="field">
           <%= f.label :営業所コード %><br />
-          <%= f.text_field :sales_office_id, autofocus: true, autocomplete: "sales_office_id" %>
+          <%= f.collection_select :sales_office_id, SalesOffice.all, :id, :id, :prompt => "選択してください"%>
         </div>
 
         <div class="field">

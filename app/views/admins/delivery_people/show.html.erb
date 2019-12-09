@@ -1,0 +1,32 @@
+
+<div class="container">
+  <div class="row">
+        <div class="col col-lg-2"></div>
+    <div class="col col-lg-8">
+      <h1>ドライバー詳細</h1>
+      <div class="packages">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="col-lg-5"></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td><%= attachment_image_tag @delivery_person, :face_photo, :fill, 200, 200, format: 'jpeg' %></td>
+                <td><p class="driver_name">名前　<%= @delivery_person.name %></p>
+                    <p class="driver_career">経歴　<%= @delivery_person.career %>年目</p>
+                    <p class="deliver_favorite">いいね数</p>
+                    <p class="deliver_comment">コメント数</p>
+                </td>
+            </tr>
+          </tbody>
+       </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

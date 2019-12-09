@@ -1,0 +1,39 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>ドライバー編集</h2>
+
+      <%= form_for(@delivery_person, url: admins_delivery_person_path(@delivery_person) ) do |f| %>
+        <div class="field">
+          <%= f.label :顔写真 %><br />
+          <%= f.attachment_field :face_photo %>
+        </div>
+
+        <div class="field">
+          <%= f.label :名前 %><br />
+          <%= f.text_field :name, autofocus: true%>
+        </div>
+
+        <div class="field">
+          <%= f.label :ドライバー歴 %><br />
+          <%= f.text_field :career, autofocus: true, autocomplete: "career" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :営業所コード %><br />
+          <%= f.collection_select :sales_office_id, SalesOffice.all, :id, :id, :prompt => "選択してください"%>
+        </div>
+
+        <div class="field">
+          <%= f.label :メールアドレス %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "編集" , class: 'btn btn-primary sign_up_botton' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

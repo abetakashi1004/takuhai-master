@@ -24,6 +24,7 @@ header, footer{
 
 footer {
   margin-top: auto;
+  height:80px;
 }
 
 body{
@@ -44,9 +45,12 @@ body,
 
 .row{
     width:80% ;
-	padding: 30px 0;
-	margin :0 auto;
-	height:630px;
+	padding: 30px 30px;
+	margin :40px auto;
+	background-color:white;
+}
+.row-master{
+	background-color:#ffda00;
 }
 
 .container{
@@ -54,12 +58,20 @@ body,
 .nav-list-item {
 	display: inline-block;
 	font-weight: 700;
-	font-size: 24px;
+	font-size: 18px;
 	padding: 10px 20px;
-	margin:30px;
+	margin:40px 20px 0 20px;
 	background-color: white;
 	box-shadow: 0px 0px 0px 5px #d3d3d3;
 	float:right;
+	
+	text-align:center;
+}
+.nav-list-item-bottom{
+	margin:0 20px;
+}
+.nav-list-footer{
+	margin:20px;
 }
 
 .app_title{
@@ -69,6 +81,7 @@ body,
 	background-color:white;
 	display:inline-block;
 	box-shadow: 0px 0px 0px 5px #d3d3d3;
+	font-family:serif;
 
 }
 .log_in_name{

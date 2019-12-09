@@ -1,2 +1,71 @@
-<h1>Admins::Packages#show</h1>
-<p>Find me in app/views/admins/packages/show.html.erb</p>
+
+<div class="container">
+  <div class="row">
+        <div class="col col-lg-2"></div>
+    <div class="col col-lg-8">
+    <h1>荷物詳細</h1>
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <th class="col-lg-2">伝票番号</th>
+            <td><%= @package.slip_number %></td>
+          </tr>
+          <tr>
+            <th>お届け先</th>
+            <td><%= @package.destination %></td>
+          </tr>
+          <tr>
+            <th>郵便番号</th>
+            <td><%= @package.postcode.postcode %></td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td><%= @package.address %></td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <td><%= @package.phone_number %></td>
+          </tr>
+          <tr>
+            <th>サイズ</th>
+            <td><%= @package.size.size %></td>
+          </tr>
+          <tr>
+            <th>荷主</th>
+            <td><%= @package.shipper.shipper_name %></td>
+          </tr>
+          <tr>
+            <th>品名</th>
+            <td><%= @package.product_name.product_name %></td>
+          </tr>
+          <tr>
+            <th>配達日</th>
+            <td><%= @package.delivery_date %></td>
+          </tr>
+          <tr>
+            <th>時間指定</th>
+            <td><%= @package.time_zone.time_zone %></td>
+          </tr>
+          <tr>
+            <th>日時変更一覧</th>
+            <% @change_dates.each do |c| %>
+            <td><%= c.delivery_date %></td>
+          </tr>
+          <% end %>
+          <tr>
+            <th>再配達一覧</th>
+            <% @change_dates.each do |c| %>
+            <td><%= c.delivery_date %></td>
+          </tr>
+          <% end %>
+          <tr>
+            <th>配達履歴一覧</th>
+            <% @deliveies.each do |c| %>
+            <td><%= c.created_at %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

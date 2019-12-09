@@ -7,4 +7,6 @@ class DeliveryPerson < ApplicationRecord
   has_many :today_courses
   has_many :takeouts
   has_many :deliveries
+
+  attachment :face_photo
 end

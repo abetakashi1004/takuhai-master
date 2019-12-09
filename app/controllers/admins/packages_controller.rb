@@ -14,12 +14,20 @@ class Admins::PackagesController < ApplicationController
   end
 
   def show
+    @package = Package.find(params[:id])
+    @change_dates = ChangeDate.where(package_id: @package.id)
+    @redeliveries = Redelivery.where(package_id: @package.id)
+    @deliveies = Delivery.where(package_id: @package.id)
   end
 
   def edit
+    @package = Package.find(params[:id])
   end
 
   def update
+    package = Package.find(params[:id])
+    package.update(package_params)
+    redirect_to admins_package_path(package.id)
   end
 
   def destroy

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_05_083538) do
+ActiveRecord::Schema.define(version: 2019_12_09_024059) do
 
   create_table "change_dates", force: :cascade do |t|
     t.integer "package_id"
@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 2019_12_05_083538) do
     t.integer "sales_office_id"
     t.string "name"
     t.string "face_photo_id"
-    t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "career"
@@ -157,7 +156,6 @@ ActiveRecord::Schema.define(version: 2019_12_05_083538) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "password"
     t.string "sales_office_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
