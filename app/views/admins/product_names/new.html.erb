@@ -1,0 +1,13 @@
+
+<div class="container">
+	 <div class="row">
+		<div class="col">
+			<h1>品名登録</h1>
+			<%= form_for(@product_name, url: admins_product_names_path) do |f| %>
+			<%= f.label :品名 %><br>
+			<%= f.text_field :product_name %>
+			<div><%= f.submit '品名を登録', class: 'btn btn-primary submit_botton' %></div>
+			<% end %>
+		</div>
+	</div>
+</div>

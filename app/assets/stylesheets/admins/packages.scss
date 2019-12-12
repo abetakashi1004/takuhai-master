@@ -1,0 +1,16 @@
+// Place all the styles related to the admins/packages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#package_slip_number, #package_destination, #package_address{
+	width:100%;
+}
+
+.packages{
+	maegin:10px 0;
+	background-color:#b0c4de;
+}
+
+.search{
+	float:right;
+}

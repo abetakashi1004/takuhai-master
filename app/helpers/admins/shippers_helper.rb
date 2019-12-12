@@ -1,0 +1,2 @@
+module Admins::ShippersHelper
+end
