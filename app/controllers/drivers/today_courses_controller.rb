@@ -5,8 +5,8 @@ class Drivers::TodayCoursesController < ApplicationController
   end
 
   def create
-  	@select_posecodes = params[:today_course][:postcode_id]
-  	@select_posecodes.each do |f|
+  	select_posecodes = params[:today_course][:postcode_id]
+  	select_posecodes.each do |f|
   		today_course = TodayCourse.new(today_course_params)
   		today_course.postcode_id = f
   		today_course.delivery_person_id = current_delivery_person.id

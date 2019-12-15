@@ -74,7 +74,7 @@
   </body>
   <footer>
     <% if delivery_person_signed_in? %>
-    <li class="nav-list-item nav-list-footer"><%= link_to"業務終了",destroy_delivery_person_session_path,method: :delete %></li>
+    <li class="nav-list-item nav-list-footer"><%= link_to"業務終了",destroy_delivery_person_session_path,method: :delete, "data-confirm" => "本日の業務を終了しますか？"  %></li>
     <% end %>
   </footer>
 </html>

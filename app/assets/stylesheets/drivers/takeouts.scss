@@ -1,3 +1,12 @@
 // Place all the styles related to the drivers/takeouts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#takeout_package_id{
+	width:250px;
+}
+.not_takeout{
+	font-size:20px;
+	color:red;
+	margin-top :15px;
+}

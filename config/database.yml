@@ -20,13 +20,6 @@ test:
   <<: *default
   database: db/test.sqlite3
 
-  production:
+production:
   <<: *default
-  database: takuhai_master
-  adapter: mysql2
-  encoding: utf8mb4
-  charset: utf8mb4
-  collation: utf8mb4_general_ci
-  host: rds-mysql-server.cxtwfb6l9jfz.ap-northeast-1.rds.amazonaws.com
-  username: root
-  password: 48694062
+  database: db/production.sqlite3
