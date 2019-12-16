@@ -47,21 +47,58 @@
             <td><%= @package.time_zone.time_zone %></td>
           </tr>
           <tr>
-            <th>日時変更一覧</th>
-            <% @change_dates.each do |c| %>
-            <td><%= c.delivery_date %></td>
+        </tbody>
+      </table>
+
+      <p>配達履歴一覧</p>
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th>日付</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <% @deliveries.each do |c| %>
+        <tbody>
+          <tr>
+            <td><%= c.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+            <td><%= c.status %></td>
           </tr>
           <% end %>
+        </tbody>
+      </table>
+
+      <p>日時変更一覧</p>
+      <table class="table table-borderless">
+        <thead>
           <tr>
-            <th>再配達一覧</th>
-            <% @change_dates.each do |c| %>
+            <th>日付</th>
+            <th>時間帯</th>
+          </tr>
+        </thead>
+        <% @change_dates.each do |c| %>
+        <tbody>
+          <tr>
             <td><%= c.delivery_date %></td>
+            <td><%= c.time_zone.time_zone %></td>
           </tr>
           <% end %>
+        </tbody>
+      </table>
+
+      <p>再配達一覧</p>
+      <table class="table table-borderless">
+        <thead>
           <tr>
-            <th>配達履歴一覧</th>
-            <% @deliveies.each do |c| %>
-            <td><%= c.created_at %></td>
+            <th>日付</th>
+            <th>時間帯</th>
+          </tr>
+        </thead>
+        <% @redeliveries.each do |c| %>
+        <tbody>
+          <tr>
+            <td><%= c.delivery_date %></td>
+            <td><%= c.time_zone.time_zone %></td>
           </tr>
           <% end %>
         </tbody>

@@ -28,6 +28,28 @@ class Drivers::TakeoutsController < ApplicationController
   end
 
   def index
+
+    @takeouts = Takeout.where(delivery_person_id: current_delivery_person.id)
+
+    if params[:search].nil?
+      @takeouts = Takeout.where(delivery_person_id: current_delivery_person.id)
+    else
+      if params[:search] == ''
+        @takeouts = Takeout.where(delivery_person_id: current_delivery_person.id)
+      else
+      @results = Package.search(params[:search])
+      aaa = []
+      @results.each do |result|
+      aaa << result.id
+      end
+      @takeouts = []
+      aaa.each do |a|
+      takeout = Takeout.find_by(delivery_person_id: current_delivery_person.id, package_id: a)
+      @takeouts << takeout
+      end
+      end
+
+     end
   end
 
   def update

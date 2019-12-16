@@ -23,10 +23,10 @@ class Drivers::DeliveriesController < ApplicationController
 				  	delivery.package_id = just_package.id
 				  	delivery.save
 				  	takeout = Takeout.find_by(package_id: just_package.id)
-				  	if    params[:delivery][:status] == '1' #配達完了なら、持ち出しテーブルのステータスを配達完了変更・荷物の完了カラムをtrueに
+				  	if    params[:delivery][:status] == '配達完了' #配達完了なら、持ち出しテーブルのステータスを配達完了変更・荷物の完了カラムをtrueに
 				  	      takeout.update(status:2)
 				  	      just_package.update(complete: true)
-				  	elsif params[:delivery][:status] == '2'#不在なら、持ち出しテーブルのステータスを不在に変更・荷物の不在カラムをtrueに
+				  	elsif params[:delivery][:status] == '不在'#不在なら、持ち出しテーブルのステータスを不在に変更・荷物の不在カラムをtrueに
 				  	      takeout.update(status:3)
 				  	      just_package.update(absence: true)
 				  	end

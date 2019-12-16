@@ -10,3 +10,31 @@
 	color:red;
 	margin-top :15px;
 }
+
+
+.tabnav{
+    margin: 0;
+    padding: 0;
+}
+.tabnav li{
+    display: inline;
+}
+.tabnav li a{
+	width:13.8%;
+    display: inline-block;
+    background: #405dca;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+    text-decoration: none;
+    text-align: center;
+}
+.tabnav li a:hover,
+.tabnav li a.active{
+    background: #ddd;
+    color: #333;
+}
+.tabcontent{
+    padding: 80px;
+    border: 1px dotted #ccc;
+}
