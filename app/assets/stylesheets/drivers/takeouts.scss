@@ -11,6 +11,13 @@
 	margin-top :15px;
 }
 
+.col-lg-8{
+    background-color: #ffda00;
+    margin: 10px 0 ;
+    padding :10px 0 ;
+    border: 2px solid black;
+    border-radius: 5px;
+}
 
 .tabnav{
     margin: 0;
@@ -20,7 +27,7 @@
     display: inline;
 }
 .tabnav li a{
-	width:13.9%;
+	width:13.8%;
     display: inline-block;
     background: #405dca;
     color: #fff;

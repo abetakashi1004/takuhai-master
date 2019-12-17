@@ -1,2 +1,21 @@
-<h1>Drivers::Takeouts#complete</h1>
-<p>Find me in app/views/drivers/takeouts/complete.html.erb</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col col-lg-2"></div>
+    <div class="col col-lg-8">
+      <h3>配達完了した荷物</h3>
+      <span class="search">
+          <%= form_tag drivers_takeouts_complete_path ,:method => 'get' do %>
+          <%= text_field_tag :search, params[:search] ,placeholder:"お届け先で検索"  %>
+          <%= submit_tag " 検索　", class: 'btn-primary' %>
+          <% end %>
+      </span>
+
+      <% @completes.each do |f| %>
+      <% if f.package.complete == true  %><!-- 荷物が終わったかどうか -->
+      <%= render 'drivers/takeouts/takeout_templete', f: f %>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,26 @@
 class Drivers::TakeoutsController < ApplicationController
 
   def complete
+    if params[:search].nil?#検索かかっているかどうか
+      @completes = Takeout.where(delivery_person_id: current_delivery_person.id)
+    else
+      if params[:search] == ''#検索になにも入力しなかったとき
+        @completes = Takeout.where(delivery_person_id: current_delivery_person.id)
+      else#何か検索したとき
+        @results = Package.search(params[:search])
+        aaa = []
+        @results.each do |result|
+          aaa << result.id
+        end
+        @completes = []
+        aaa.each do |a|
+          takeout = Takeout.find_by(delivery_person_id: current_delivery_person.id, package_id: a)#検索に該当した荷物を持ち出ししているかどうか
+          if takeout != nil #該当した荷物が持ち出していれば、＠completes に代入
+            @completes << takeout
+          end
+        end
+      end
+    end
   end
 
   def new
@@ -39,18 +59,19 @@ class Drivers::TakeoutsController < ApplicationController
       if params[:search] == ''
         @takeouts = Takeout.where(delivery_person_id: current_delivery_person.id)
       else
-      @results = Package.search(params[:search])
-      aaa = []
-      @results.each do |result|
-      aaa << result.id
+        @results = Package.search(params[:search])
+        aaa = []
+        @results.each do |result|
+         aaa << result.id
+        end
+        @takeouts = []
+        aaa.each do |a|
+          takeout = Takeout.find_by(delivery_person_id: current_delivery_person.id, package_id: a)
+          if takeout != nil
+            @takeouts << takeout
+          end
+        end
       end
-      @takeouts = []
-      aaa.each do |a|
-      takeout = Takeout.find_by(delivery_person_id: current_delivery_person.id, package_id: a)
-      @takeouts << takeout
-      end
-      end
-
      end
   end
 

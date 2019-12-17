@@ -5,8 +5,7 @@
 			<%= form_for(@today_course, url: drivers_today_courses_path) do |f| %>
 		    <%= f.collection_check_boxes :postcode_id, @poctcodes, :id, :course_name, include_hidden: false do |b| %>
 		      <div class="today_course_name">
-		      	<%= b. check_box %>
-		      	<%= b. text %>
+		      	<label class="decision-course btn-warning"><%= b. check_box %><%= b. text %></label>
 		      </div>
 		      <% end %>
 			<%= f.submit "今日の配達コースを確定する" , class:"btn btn-primary" %>

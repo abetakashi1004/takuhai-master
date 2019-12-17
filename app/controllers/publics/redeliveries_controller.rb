@@ -2,6 +2,7 @@ class Publics::RedeliveriesController < ApplicationController
 
   def new
   	@redelivery = Redelivery.new
+    @packages = Package.search2(params[:search])
   end
 
   def create

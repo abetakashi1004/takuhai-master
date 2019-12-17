@@ -1,2 +1,20 @@
-<h1>Drivers::DeliveryPeople#show</h1>
-<p>Find me in app/views/drivers/delivery_people/show.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col profile">
+			<h2>マイページ</h2>
+				<div class="profile-image">
+					<%= attachment_image_tag @delivery_person, :face_photo , :fill, 130, 130, format: 'jpeg' %>
+				</div>
+				<div class="profile-item">
+					<p class="profile-name">名前：<%= @delivery_person.name  %></p>
+					<p class="profile-career">配達歴：<%= @delivery_person.career %></p>
+					<p class="profile-count">コメント　件　　いいね　件</p>
+				</div>
+
+			<div class="profile-bottom">
+				ここにコメント
+			</div>
+		</div>
+	</div>
+</div>
+
