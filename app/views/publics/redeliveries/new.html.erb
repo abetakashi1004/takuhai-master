@@ -1,2 +1,16 @@
-<h1>Publics::Redeliveries#new</h1>
-<p>Find me in app/views/publics/redeliveries/new.html.erb</p>
+
+<div class="container">
+	 <div class="row">
+		<div class="col">
+			<h1>再配達依頼</h1>
+			<p class="not_takeout"><%= flash.now[:not_takeout] %></p>
+　　　　　　　<%= form_for(@redelivery) do |f| %>
+            <%= f.label :とりあえず荷物のIDで入力%><br>
+			<%= f.text_field :package_id %>
+			<%= f.date_field :delivery_date %>
+			<%= f.collection_select :time_zone_id, TimeZone.all, :id, :time_zone, :prompt => "選択してください"%>
+			<div><%= f.submit '登録', class: 'btn btn-primary submit_botton' %></div>
+			<% end %>
+		</div>
+	</div>
+</div>

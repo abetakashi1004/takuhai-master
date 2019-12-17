@@ -30,6 +30,8 @@ class Drivers::TakeoutsController < ApplicationController
   def index
 
     @takeouts = Takeout.where(delivery_person_id: current_delivery_person.id)
+    @redeliveries = Redelivery.all
+    @change_dates = ChangeDate.all
 
     if params[:search].nil?
       @takeouts = Takeout.where(delivery_person_id: current_delivery_person.id)

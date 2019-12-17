@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     get 'takeouts/complete'
     resources :deliveries, only:[:new, :create, :destroy]
     resources :today_courses,only:[:new, :create]
+    resources :redeliveries,only:[:update]
   end
 
   namespace :admins do
