@@ -19,9 +19,13 @@ class Package < ApplicationRecord
 
     def self.search2(search)
         if search
-            Package.where(slip_number: "#{search}")
-        else
-            Package.all
+            Package.find_by(slip_number: "#{search}")
+        end
+    end
+
+    def self.search3(search)
+        if search
+            Package.where(phone_number: "#{search}")
         end
     end
 end

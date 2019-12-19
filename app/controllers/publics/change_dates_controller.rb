@@ -4,6 +4,12 @@ class Publics::ChangeDatesController < ApplicationController
   	@change_date = ChangeDate.new
   end
 
+  def search
+    @packages = Package.search3(params[:search])
+    @change_date = ChangeDate.new
+    @time_zones = TimeZone.all
+  end
+
   def create
   	change_date = ChangeDate.new(cange_date_params)
   	change_date.save

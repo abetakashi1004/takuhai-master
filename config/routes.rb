@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     resources :homes, only:[:index]
     get 'homes/about'
     get 'homes/plus'
+    get 'redeliveries/search'
+    get 'change_dates/search'
   end
 
   namespace :drivers do

@@ -3,52 +3,10 @@
   <div class="row">
     <div class="col">
       <h2>再配達依頼</h2>
-        <%= form_tag new_redelivery_path ,:method => 'get' do %>
-        <label>伝票番号</label>：　<%= text_field_tag :search, params[:search] ,placeholder:"伝票番号で検索", search_method: 'perfect_match' %>
-        <%= submit_tag " 検索　", class: 'btn-primary' %>
-        <% end %>
-    </div>
-  </div>
-</div>
-
-<div class="container search">
-  <div class="row">
-    <div class="col col-lg-2"></div>
-    <div class="col col-lg-8">
-      <h2>登録荷物一覧</h2>
-      <% @packages.each do |f| %>
-      <div class="packages">
-        <table class="table table-borderless">
-
-          <tbody>
-            <tr>
-              <th class="col-lg-2">名前</th>
-              <td><%= f.slip_number %></td>
-            </tr>
-            <tr>
-              <th>お届け先</th>
-              <td><%= f.destination %></td>
-            </tr>
-            <tr>
-              <th>郵便番号</th>
-              <td><%= f.postcode.postcode %></td>
-            </tr>
-            <tr>
-              <th>住所</th>
-              <td><%= f.address %></td>
-            </tr>
-            <tr>
-              <th>荷主名</th>
-              <td><%= f.shipper.shipper_name %></td>
-            </tr>
-            <tr>
-              <th></th>
-              <td><%= link_to "詳細ページ", admins_package_path(f.id), class:"btn btn-default " %>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <%= form_tag(redeliveries_search_path, :method => 'get') do %>
+      <label>伝票番号</label>：
+      <%= text_field_tag :search ,params[:search],placeholder:"伝票番号で検索"%>
+      <%= submit_tag " 検索　", class: 'btn-primary' %>
       <% end %>
     </div>
   </div>

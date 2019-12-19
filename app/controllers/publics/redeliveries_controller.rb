@@ -2,7 +2,12 @@ class Publics::RedeliveriesController < ApplicationController
 
   def new
   	@redelivery = Redelivery.new
-    @packages = Package.search2(params[:search])
+  end
+
+  def search
+    @package = Package.search2(params[:search])
+    @redelivery = Redelivery.new
+    @time_zones = TimeZone.all
   end
 
   def create
