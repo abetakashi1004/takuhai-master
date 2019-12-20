@@ -2,6 +2,7 @@
 <div class="container">
 	 <div class="row">
 		<div class="col">
+			<p class="success-message"><%= flash.now[:success] %></p>
 			<h2>配達日付変更依頼</h2>
 			<%= form_tag(change_dates_search_path, :method => 'get') do %>
 			<label>電話番号</label>：

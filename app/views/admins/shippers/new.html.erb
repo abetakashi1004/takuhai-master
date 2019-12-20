@@ -23,9 +23,12 @@
 						<th>電話番号</th>
 						<td><%= f.text_field :phone_number %></td>
 					</tr>
+										<tr>
+						<th></th>
+						<td><%= f.submit '荷主を登録', class: 'btn btn-primary submit_botton' %></td>
+					</tr>
 				</tbody>
 			</table>
-			<%= f.submit '荷主を登録', class: 'btn btn-primary submit_botton' %>
 		<% end %>
 		</div>
   </div>

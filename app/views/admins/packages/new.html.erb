@@ -47,10 +47,13 @@
 						<th>時間指定</th>
 						<td><%= f.collection_select :time_zone_id, TimeZone.all, :id, :time_zone, :prompt => "選択してください"%></td>
 					</tr>
+					<tr>
+						<th></th>
+						<td><%= f.submit '商品を追加', class:"btn btn-primary" %></td>
+					</tr>
 
 				</tbody>
 			</table>
-			<%= f.submit '商品を追加', class:"btn btn-primary" %>
 		<% end %>
 		</div>
   </div>

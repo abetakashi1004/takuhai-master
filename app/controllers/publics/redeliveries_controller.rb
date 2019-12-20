@@ -13,7 +13,7 @@ class Publics::RedeliveriesController < ApplicationController
   def create
   	redelivery = Redelivery.new(redelivery_params)
   	redelivery.save
-  	redirect_to new_redelivery_path
+  	redirect_to new_redelivery_path, flash:{success: "配達日時を変更しました"}
   end
 
 private
