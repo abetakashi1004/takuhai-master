@@ -11,12 +11,6 @@ class Publics::RedeliveriesController < ApplicationController
   end
 
   def create
-  	redelivery = Redelivery.new(redelivery_params)
-  	redelivery.save
-  	redirect_to new_redelivery_path, flash:{message: "再配達を受付しました"}
-  end
-
-  def create
     redelivery = Redelivery.new(redelivery_params)
     now_package = Package.find_by(id: params[:redelivery][:package_id])#再配達を指定した荷物を特定
     now_delivery_date = params[:redelivery][:delivery_date]#再配達で指定された日付

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_19_092524) do
+ActiveRecord::Schema.define(version: 2019_12_20_051101) do
 
   create_table "change_dates", force: :cascade do |t|
     t.integer "package_id"
@@ -62,8 +62,6 @@ ActiveRecord::Schema.define(version: 2019_12_19_092524) do
     t.string "name"
     t.integer "postcode"
     t.string "address"
-    t.integer "level"
-    t.integer "point"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "phone_number"

@@ -1,0 +1,9 @@
+
+<% if Favorite.find_by(enduser_id: current_enduser.id, delivery_id: f.id) %>
+  <span><%= button_to favorites_path(favorite: {enduser_id: current_enduser.id, delivery_id: f.id}), class: 'good-button',  method: :delete, remote: true do %>
+  <i class="fas fa-thumbs-up fa-3x"></i><% end %></span>
+<% else %>
+
+  <span><%= button_to favorites_path(favorite: {enduser_id: current_enduser.id, delivery_id: f.id}), class: 'good-button', remote: true do %>
+  <i class="far fa-thumbs-up fa-4x"></i><% end %>
+<% end %></span>
