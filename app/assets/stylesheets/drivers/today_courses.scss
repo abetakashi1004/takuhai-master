@@ -1,3 +1,32 @@
 // Place all the styles related to the drivers/today_courses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.today_course_name{
+	margin:10px;
+	font-size:20px;
+}
+
+.decision-course{
+    width:120px;
+	height:45px;
+	text-align: center;
+	border-radius: 5px;
+}
+
+.decision-course input[type="checkbox"]{
+	margin: 14px 10px 0 0 ;
+}
+
+.col-md-6{
+	margin: 0 auto;
+	text-align: center;
+}
+
+.course-button{
+	width:250px;
+	height: 45px;
+	margin-top: 20px;
+	font-size: 18px;
+	border-radius: 5px;
+}

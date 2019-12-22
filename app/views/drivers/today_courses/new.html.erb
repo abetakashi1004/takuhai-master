@@ -1,2 +1,17 @@
-<h1>Drivers::TodayCourses#new</h1>
-<p>Find me in app/views/drivers/today_courses/new.html.erb</p>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<h2>コース選択を選択してください</h2>
+			<%= form_for(@today_course, url: drivers_today_courses_path) do |f| %>
+		    <%= f.collection_check_boxes :postcode_id, @poctcodes, :id, :course_name, include_hidden: false do |b| %>
+		      <div class="today_course_name">
+		      	<label class="decision-course btn-warning"><%= b. check_box %><%= b. text %></label>
+		      </div>
+		      <% end %>
+			　<%= f.submit "今日の配達コースを確定する" , class:" btn-primary course-button" %>
+			<% end %>
+		</div>
+	</div>
+</div>

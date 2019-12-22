@@ -1,0 +1,44 @@
+
+<div class="container">
+    <div class="col col-lg-2"></div>
+    <div class="col col-lg-8">
+      <h3>日時変更の荷物</h3>
+      <% change_dates.each do |f| %>
+        <% if f.package.complete == false  %><!-- 荷物が終わったかどうか -->
+
+          <% now_postcode_id = f.package.postcode_id %>
+          <% now_delivery_persons = TodayCourse.where(postcode_id: now_postcode_id) %><!-- 日付変更された荷物のエリア担当ドライバーを特定 -->
+          <% now_delivery_persons.each do |a|  %>
+            <% if a.delivery_person.id == current_delivery_person.id %><!-- 日付変更された荷物のエリア担当ドライバー　＝　ログイン中のドライバー -->
+
+              <% if f.check == false %>
+                <%= render 'drivers/takeouts/takeout_templete', f: f %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+</div>
+
+<div class="container">
+    <div class="col col-lg-2"></div>
+    <div class="col col-lg-8">
+      <h3>再配達の荷物</h3>
+      <% redeliveries.each do |f| %>
+        <% if f.package.complete == false  %><!-- 荷物が終わったかどうか -->
+
+          <% now_postcode_id = f.package.postcode_id %>
+          <% now_delivery_persons = TodayCourse.where(postcode_id: now_postcode_id) %>
+          <% now_delivery_persons.each do |a|  %>
+            <% if a.delivery_person.id == current_delivery_person.id %>
+
+              <% if f.check == false %>
+                <%= render 'drivers/takeouts/takeout_templete', f: f %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+</div>

@@ -1,2 +1,108 @@
-<h1>Drivers::Packages#show</h1>
-<p>Find me in app/views/drivers/packages/show.html.erb</p>
+
+<div class="container">
+  <div class="row">
+        <div class="col col-lg-2"></div>
+    <div class="col col-lg-8">
+    <h2>荷物詳細</h2>
+      <table id="table" class="table table-borderless">
+        <tbody>
+          <tr>
+            <th class="col-lg-2">伝票番号</th>
+            <td><%= @package.slip_number %></td>
+          </tr>
+          <tr>
+            <th>お届け先</th>
+            <td><%= @package.destination %></td>
+          </tr>
+          <tr>
+            <th>郵便番号</th>
+            <td><%= @package.postcode.postcode %></td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td><%= @package.address %></td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <td><%= @package.phone_number %></td>
+          </tr>
+          <tr>
+            <th>サイズ</th>
+            <td><%= @package.size.size %></td>
+          </tr>
+          <tr>
+            <th>荷主</th>
+            <td><%= @package.shipper.shipper_name %></td>
+          </tr>
+          <tr>
+            <th>品名</th>
+            <td><%= @package.product_name.product_name %></td>
+          </tr>
+          <tr>
+            <th>配達日</th>
+            <td><%= @package.delivery_date %></td>
+          </tr>
+          <tr>
+            <th>時間指定</th>
+            <td><%= @package.time_zone.time_zone %></td>
+          </tr>
+          <tr>
+        </tbody>
+      </table>
+
+      <h3>配達履歴一覧</h3>
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th class="col-lg-7">日付</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <% @deliveries.each do |c| %>
+        <tbody>
+          <tr>
+            <td><%= c.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+            <td><%= c.status %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <h3>日時変更依頼一覧</h3>
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th class="col-lg-7">日付</th>
+            <th>時間帯</th>
+          </tr>
+        </thead>
+        <% @change_dates.each do |c| %>
+        <tbody>
+          <tr>
+            <td><%= c.delivery_date %></td>
+            <td><%= c.time_zone.time_zone %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <h3>再配達依頼一覧</h3>
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th class="col-lg-7">日付</th>
+            <th>時間帯</th>
+          </tr>
+        </thead>
+        <% @redeliveries.each do |c| %>
+        <tbody>
+          <tr>
+            <td><%= c.delivery_date %></td>
+            <td><%= c.time_zone.time_zone %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,45 @@
 // Place all the styles related to the drivers/delivery_people controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.profile-bottom{
+	width: 100%;
+	padding: 10px ;
+}
+
+.profile-image{
+	padding: 10px;
+	width:30%;
+	height:150px;
+	display: inline-block;
+	float: left;
+	text-align: center;
+}
+.profile-item{
+	padding: 10px;
+	width:70%;
+	height:150px;
+	display: inline-block;
+	float: left;
+}
+
+.profile{
+	width:70%;
+	margin:0 auto;
+	padding: 15px;
+	background-color: #b0c4de;
+}
+
+.profile-name, .profile-career{
+	font-size: 20px;
+	margin-top: 20px;
+}
+
+.profile-count{
+	font-size: 15px;
+	margin-top: 10px;
+}
+
+#delivery_person_email{
+	width:300px;
+}

@@ -1,3 +1,53 @@
 // Place all the styles related to the drivers/takeouts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#takeout_package_id{
+	width:250px;
+}
+.not_takeout{
+	font-size:20px;
+	color:red;
+	margin-top :15px;
+}
+
+.takeout_complete{
+    font-size:20px;
+    color:green;
+    margin-top :15px;
+}
+
+.col-lg-8{
+    background-color: #ffda00;
+    margin: 10px 0 ;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 15px 0;
+}
+
+.tabnav{
+    margin: 0;
+    padding: 0;
+}
+.tabnav li{
+    display: inline;
+}
+.tabnav li a{
+	width:13.8%;
+    display: inline-block;
+    background: #405dca;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+    text-decoration: none;
+    text-align: center;
+}
+.tabnav li a:hover,
+.tabnav li a.active{
+    background: #ddd;
+    color: #333;
+}
+.tabcontent{
+    padding: 80px;
+    border: 1px dotted #ccc;
+}

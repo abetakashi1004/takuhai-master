@@ -3,13 +3,13 @@
   <div class="row">
   	    <div class="col col-lg-2"></div>
 		<div class="col col-lg-8">
-		<h1>荷物登録</h1>
+		<h2>荷物登録</h2>
 		<%= form_for(@package, url: admins_packages_path ) do |f| %>
-			<table class="table table-striped">
+			<table class="table table-borderless">
 				<tbody>
 					<tr>
 						<th class="col-lg-2">伝票番号</th>
-						<td><%= f.text_field :slip_number %></td>
+						<td><%= f.text_field :slip_number, placeholder: "半角数字12桁で入力してください" %></td>
 					</tr>
 					<tr>
 						<th>お届け先</th>
@@ -47,10 +47,13 @@
 						<th>時間指定</th>
 						<td><%= f.collection_select :time_zone_id, TimeZone.all, :id, :time_zone, :prompt => "選択してください"%></td>
 					</tr>
+					<tr>
+						<th></th>
+						<td><%= f.submit '商品を追加', class:"btn btn-primary" %></td>
+					</tr>
 
 				</tbody>
 			</table>
-			<%= f.submit '商品を追加', class:"btn btn-primary" %>
 		<% end %>
 		</div>
   </div>

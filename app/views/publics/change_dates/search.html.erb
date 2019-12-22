@@ -1,0 +1,76 @@
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<div class="col col-lg-2"></div>
+			<div class="col col-lg-8">
+				<% if Package.where(phone_number: params[:search]).exists?  %>
+				　　<% @packages.each do |a| %>
+						<div class="packages">
+						    <table class="table table-borderless">
+						      <tbody>
+						        <tr>
+						          <th class="col-lg-2">伝票番号</th>
+						          <td><%= a.slip_number %></td>
+						        </tr>
+						        <tr>
+						          <th>お届け先</th>
+						          <td><%= a.destination %></td>
+						        </tr>
+						        <tr>
+						        <tr>
+						          <th>荷主</th>
+						          <td><%= a.shipper.shipper_name %></td>
+						        </tr>
+						        <tr>
+						          <th></th>
+						          <td>
+						          	<button type="button" class="btn btn-default" data-toggle="modal" data-target="#package_modal_<%= a.id %>" >
+						          		配達の日付を変更する
+						          	</button>
+						          </td>
+						        </tr>
+						      </tbody>
+						    </table>
+						</div>
+
+					    <div class="modal fade" id="package_modal_<%= a.id %>" tabindex="-1" role="dialog" aria-labelledby="Modal" aria-hidden="true">
+						  <div class="modal-dialog modal-lg" role="document">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h3 class="modal-title" id="Modal">日付変更依頼フォーム</h3>
+						        </button>
+						      </div>
+						      <div class="modal-body">
+						      	<div class="form">
+							      	<%= form_for(@change_date) do |f| %>
+							      	<h4>日付を選択してください</h3>
+							      	<%= f.date_field :delivery_date %><br>
+							      	<%= f.hidden_field :package_id, value: a.id %>
+							      	<h4>時間帯を選択してください</h3>
+							      	<% @time_zones.each do |t| %>
+							      		<label class="btn-warning decision_time_zone ">
+							      			<%= f.radio_button :time_zone_id, t.id %>
+							      			<%= t.time_zone %>
+						      			</label><br>
+							      	<% end %>
+									<%= f.submit "配達の日付を変更する" , class:"btn btn-primary" %>
+							      	<% end %>
+						      	</div>
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+						<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+						<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+						<% end %>
+				<% else %>
+				      <h3>該当する荷物がありませんでした</h3>
+				<% end %>
+		    </div>
+ 		</div>
+	</div>
+</div>
