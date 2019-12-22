@@ -3,6 +3,7 @@
 		<div class="col">
 			<div class="col col-lg-2"></div>
 			<div class="col col-lg-8">
+				<h3>検索結果</h3>
 				<% if Package.where(phone_number: params[:search]).exists?  %>
 				　　<% @packages.each do |a| %>
 						<div class="packages">
@@ -43,17 +44,17 @@
 						      <div class="modal-body">
 						      	<div class="form">
 							      	<%= form_for(@change_date) do |f| %>
-							      	<h4>日付を選択してください</h3>
+							      	<h4 class="select-title">日付を選択してください</h3>
 							      	<%= f.date_field :delivery_date %><br>
 							      	<%= f.hidden_field :package_id, value: a.id %>
-							      	<h4>時間帯を選択してください</h3>
+							      	<h4 class="select-title">時間帯を選択してください</h3>
 							      	<% @time_zones.each do |t| %>
 							      		<label class="btn-warning decision_time_zone ">
 							      			<%= f.radio_button :time_zone_id, t.id %>
 							      			<%= t.time_zone %>
 						      			</label><br>
 							      	<% end %>
-									<%= f.submit "配達の日付を変更する" , class:"btn btn-primary" %>
+									<%= f.submit "配達の日付を変更する" , class:"btn btn-primary change-date-button " %>
 							      	<% end %>
 						      	</div>
 						      </div>

@@ -1,10 +1,10 @@
 class Drivers::DeliveriesController < Drivers::ApplicationController
   def new
   	@delivery = Delivery.new
-  	@takeout = Takeout.where(delivery_person_id: current_delivery_person.id)
-  	@completes = Takeout.where(delivery_person_id: current_delivery_person.id, status: 2)
-  	@backs = Takeout.where(delivery_person_id: current_delivery_person.id, status: 3)
-  	@yets = Takeout.where(delivery_person_id: current_delivery_person.id, status: 1)
+  	@takeout = Takeout.where(delivery_person_id: current_delivery_person.id, created_at: Time.zone.now.beginning_of_day)
+  	@completes = Takeout.where(delivery_person_id: current_delivery_person.id, status: 2, created_at:Time.zone.now.beginning_of_day)
+  	@backs = Takeout.where(delivery_person_id: current_delivery_person.id, status: 3, created_at:Time.zone.now.beginning_of_day )
+  	@yets = Takeout.where(delivery_person_id: current_delivery_person.id, status: 1, created_at:Time.zone.now.beginning_of_day)
   end
 
   def create

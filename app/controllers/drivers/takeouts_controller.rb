@@ -1,4 +1,5 @@
 class Drivers::TakeoutsController < Drivers::ApplicationController
+
   def complete
     if params[:search].nil?#検索かかっているかどうか
       @completes = Takeout.where(delivery_person_id: current_delivery_person.id)
@@ -33,7 +34,7 @@ class Drivers::TakeoutsController < Drivers::ApplicationController
       if Package.where(slip_number: current_slip_number).exists? #その伝票番号が登録されている荷物が存在するかどうか
          just_package = Package.find_by(slip_number: current_slip_number)
          takeout.package_id = just_package.id
-            if Takeout.where(package_id:just_package.id, delivery_person_id:current_delivery_person.id).exists? #すでに持ち出し登録しているかどうか
+            if Takeout.where(package_id:just_package.id, delivery_person_id:current_delivery_person.id, created_at: Time.zone.now.beginning_of_day).exists? #すでに持ち出し登録しているかどうか
               flash.now[:not_takeout] = "すでに持ち出し登録しています"
               render 'new'
             else
@@ -54,10 +55,10 @@ class Drivers::TakeoutsController < Drivers::ApplicationController
     @change_dates = ChangeDate.all
 
     if params[:search].nil?
-      @takeouts = Takeout.where(delivery_person_id: current_delivery_person.id)
+      @takeouts = Takeout.where(delivery_person_id: current_delivery_person.id, created_at: Time.zone.now.beginning_of_day)
     else
       if params[:search] == ''
-        @takeouts = Takeout.where(delivery_person_id: current_delivery_person.id)
+        @takeouts = Takeout.where(delivery_person_id: current_delivery_person.id, created_at: Time.zone.now.beginning_of_day)
       else
         @results = Package.search(params[:search])
         aaa = []

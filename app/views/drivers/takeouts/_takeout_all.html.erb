@@ -8,6 +8,7 @@
           <%= submit_tag " 検索　", class: 'btn-primary' %>
           <% end %>
       </span>
+      <h3>持ち出し一覧</h3>
 
       <% takeouts.each do |f| %>
          <% if f.package.complete == false  %><!-- 荷物が終わったかどうか -->

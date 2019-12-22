@@ -6,8 +6,8 @@
       <h2>配達日付変更依頼フォーム</h2>
       <%= form_tag(change_dates_search_path, :method => 'get') do %>
       <label  class="serach-place">荷物に設定した電話番号を入力してください</label><br>
-      <%= text_field_tag :search ,params[:search],placeholder:"電話番号で検索"%>
-      <%= submit_tag " 検索　", class: 'btn-primary' %>
+      <%= text_field_tag :search ,params[:search],placeholder:"半角数字で入力" , class: 'search-form' %>
+      <%= submit_tag " 検索　", class: 'btn-primary search-button ' %>
       <% end %>
     </div>
   </div>
