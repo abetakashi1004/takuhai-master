@@ -62,17 +62,26 @@
 				            <th>日付・時間</th>
 				            <td><%= f.created_at.strftime('%Y-%m-%d %H:%M') %></td>
 				          </tr>
-				          <tr>
-				            <th id="mypage-driver" class="mypage">配達担当ドライバー</th>
-				            <td><%= f.delivery_person.name %>
-				            	<%= attachment_image_tag f.delivery_person, :face_photo, :fill, 80, 80, format: 'jpeg' %>
-				            </td>
-				          </tr>
-				            <th>いいね・コメント</th>
-				            <td><span class="<%= f.id %>"><%= render 'publics/endusers/favorite' , f: f  %></span>
-				            	<button type="button" class="btn btn-info comment-button " data-toggle="modal" data-target="#comment_modal_<%= f.id %>" >配達員にコメントする</button>
-				            	</td>
-				          </tr>
+				          <% if f.delivery_person %>
+					          <tr>
+					            <th id="mypage-driver" class="mypage">配達担当ドライバー</th>
+					            <td>
+					            	<%= f.delivery_person.name %>
+					            	<%= attachment_image_tag f.delivery_person, :face_photo, :fill, 80, 80, format: 'jpeg' %>
+					            </td>
+					          </tr>
+					          <tr>
+					            <th>いいね・コメント</th>
+					            <td><span class="<%= f.id %>"><%= render 'publics/endusers/favorite' , f: f  %></span>
+					            	<button type="button" class="btn btn-info comment-button " data-toggle="modal" data-target="#comment_modal_<%= f.id %>" >配達員にコメントする</button>
+					            	</td>
+				              </tr>
+			              <% else %>
+				            	<tr>
+				            		<th>配達担当ドライバー</th>
+				            		<td>（離職したドライバー）</td>
+				            	</tr>
+			              <% end %>
 				          <% if f.status == "不在" && f.package.complete != true   %>
 				          <tr>
 				            <th>再配達依頼ボタン</th>
@@ -115,30 +124,32 @@
 				  </div>
 				</div>
 
-				<div class="modal fade" id="comment_modal_<%= f.id %>" tabindex="-1" role="dialog" aria-labelledby="Modal" aria-hidden="true">
-				  <div class="modal-dialog" role="document">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <h3 class="modal-title" id="Modal">コメントフォーム</h3>
-				        </button>
-				      </div>
-				      <div class="modal-body">
-				      	<div class="form">
-					      	<%= form_for(@comment) do |b| %>
-					      	<%= b.text_field :comment %>
-					      	<%= b.hidden_field :enduser_id , value: current_enduser.id %>
-					      	<%= b.hidden_field :delivery_id, value: f.id %>
-					      	<%= b.hidden_field :delivery_person_id, value: f.delivery_person.id %>
-					      	<%= b.submit "コメントする" , class:"btn btn-primary" %>
-					      	<% end %>
-				      	</div>
-				      </div>
-				      <div class="modal-footer">
-				        <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
-				      </div>
-				    </div>
-				  </div>
-				</div>
+				<% if f.delivery_person %>
+					<div class="modal fade" id="comment_modal_<%= f.id %>" tabindex="-1" role="dialog" aria-labelledby="Modal" aria-hidden="true">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h3 class="modal-title" id="Modal">コメントフォーム</h3>
+					        </button>
+					      </div>
+					      <div class="modal-body">
+					      	<div class="form">
+						      	<%= form_for(@comment) do |b| %>
+						      	<%= b.text_field :comment %>
+						      	<%= b.hidden_field :enduser_id , value: current_enduser.id %>
+						      	<%= b.hidden_field :delivery_id, value: f.id %>
+						      	<%= b.hidden_field :delivery_person_id, value: f.delivery_person.id %>
+						      	<%= b.submit "コメントする" , class:"btn btn-primary" %>
+						      	<% end %>
+					      	</div>
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				<% end %>
 
 				<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

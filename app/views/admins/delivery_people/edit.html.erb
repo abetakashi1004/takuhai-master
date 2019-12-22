@@ -1,39 +1,40 @@
 
 <div class="container">
   <div class="row">
-    <div class="col">
-      <h2>ドライバー編集</h2>
-
+    <div class="col col-lg-2"></div>
+    <div class="col col-lg-8">
+    <h2>ドライバー編集</h2>
       <%= form_for(@delivery_person, url: admins_delivery_person_path(@delivery_person) ) do |f| %>
-        <div class="field">
-          <%= f.label :顔写真 %><br />
-          <%= f.attachment_field :face_photo %>
-        </div>
-
-        <div class="field">
-          <%= f.label :名前 %><br />
-          <%= f.text_field :name, autofocus: true%>
-        </div>
-
-        <div class="field">
-          <%= f.label :ドライバー歴 %><br />
-          <%= f.text_field :career, autofocus: true, autocomplete: "career" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :営業所コード %><br />
-          <%= f.collection_select :sales_office_id, SalesOffice.all, :id, :sales_office_name, :prompt => "選択してください"%>
-        </div>
-
-        <div class="field">
-          <%= f.label :メールアドレス %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "編集" , class: 'btn btn-primary sign_up_botton' %>
-        </div>
-      <% end %>
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <th class="col-lg-2">顔写真</th>
+            <td><%= attachment_image_tag @delivery_person, :face_photo, :fill,260, 260, format: 'jpeg', size: "100x100", id: "img_prev", class:"field" %><%= f.attachment_field :face_photo %></td>
+          </tr>
+          <tr>
+            <th>名前</th>
+            <td><%= f.text_field :name, autofocus: true%></td>
+          </tr>
+          <tr>
+            <th>ドライバー歴</th>
+            <td><%= f.text_field :career, autofocus: true, autocomplete: "career", placeholder: "（例） 10" %></td>
+          </tr>
+          <tr>
+            <th>営業所</th>
+            <td><%= f.collection_select :sales_office_id, SalesOffice.all, :id, :sales_office_name, :prompt => "選択してください"%></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td><%= f.submit "編集" , class: 'btn btn-primary sign_up_botton' %></td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
     </div>
   </div>
 </div>
+

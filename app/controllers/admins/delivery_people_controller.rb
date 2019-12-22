@@ -19,6 +19,9 @@ class Admins::DeliveryPeopleController < Admins::ApplicationController
   end
 
   def destroy
+    delivery_person = DeliveryPerson.find(params[:id])
+    delivery_person.destroy
+    redirect_to admins_delivery_people_path
   end
 
 private

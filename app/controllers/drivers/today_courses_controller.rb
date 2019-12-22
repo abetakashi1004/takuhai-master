@@ -1,7 +1,7 @@
 class Drivers::TodayCoursesController < Drivers::ApplicationController
   def new
   	@today_course = TodayCourse.new
-  	@poctcodes = Postcode.all
+  	@poctcodes = Postcode.where(sales_office_id:current_delivery_person.sales_office.id)
   end
 
   def create

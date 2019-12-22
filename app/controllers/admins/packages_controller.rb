@@ -42,5 +42,4 @@ private
     params.require(:package).permit(:shipper_id, :product_name_id, :postcode_id, :time_zone_id, :phone_number_id,
                                     :size_id, :slip_number, :destination, :address, :delivery_date, :phone_number)
   end
-
 end

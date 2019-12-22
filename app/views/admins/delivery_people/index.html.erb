@@ -23,7 +23,7 @@
                 </td>
                 <td><%= link_to "ドライバー詳細", admins_delivery_person_path(f.id), class:"btn btn-default btn-block " %>
                   <%= link_to "編集", edit_admins_delivery_person_path(f.id), class:"btn btn-default btn-block " %>
-                  <%= link_to "削除", admins_delivery_person_path(f.id), method: :delete ,class:"btn btn-default btn-block " %></td>
+                  <%= link_to "削除（退職時）", admins_delivery_person_path(f.id), method: :delete ,class:"btn btn-default btn-block ", "data-confirm" => "本当に削除しますか？" %></td>
               </tr>
               <% end %>
           </tbody>

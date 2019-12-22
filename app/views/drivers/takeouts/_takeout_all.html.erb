@@ -10,9 +10,9 @@
       </span>
 
       <% takeouts.each do |f| %>
-      <% if f.package.complete == false  %><!-- 荷物が終わったかどうか -->
-      <%= render 'drivers/takeouts/takeout_templete', f: f %>
-      <% end %>
+         <% if f.package.complete == false  %><!-- 荷物が終わったかどうか -->
+         <%= render 'drivers/takeouts/takeout_templete', f: f %>
+         <% end %>
       <% end %>
     </div>
 </div>

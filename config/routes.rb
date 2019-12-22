@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     resources :packages,only:[:new, :create, :index, :show, :edit, :update, :destroy]
     resources :homes, only:[:index]
     resources :phone_numbers, only:[:create]
+    resources :comments, only:[:destroy]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

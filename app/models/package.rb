@@ -1,13 +1,14 @@
 class Package < ApplicationRecord
+
 	belongs_to :shipper
 	belongs_to :product_name
 	belongs_to :postcode
 	belongs_to :time_zone
 	belongs_to :size
-	has_many :change_dates
-	has_many :redeliveries
-	has_many :deliveries
-	has_many :takeouts
+	has_many :change_dates, dependent: :destroy
+	has_many :redeliveries, dependent: :destroy
+	has_many :deliveries, dependent: :destroy
+	has_many :takeouts, dependent: :destroy
 
     validates :shipper_id, presence:true
     validates :product_name_id, presence:true
