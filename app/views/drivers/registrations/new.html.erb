@@ -18,11 +18,11 @@
           </tr>
           <tr>
             <th>ドライバー歴</th>
-            <td><%= f.text_field :career, autofocus: true, autocomplete: "career" %></td>
+            <td><%= f.text_field :career, autofocus: true, autocomplete: "career", placeholder: "（例） 10" %></td>
           </tr>
           <tr>
-            <th>営業所コード</th>
-            <td><%= f.collection_select :sales_office_id, SalesOffice.all, :id, :id, :prompt => "選択してください"%></td>
+            <th>営業所</th>
+            <td><%= f.collection_select :sales_office_id, SalesOffice.all, :id, :sales_office_name, :prompt => "選択してください"%></td>
           </tr>
           <tr>
             <th>メールアドレス</th>

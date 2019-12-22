@@ -14,7 +14,7 @@
 
       <% @packages.each do |f| %>
       <div class="packages">
-        <table class="table table-borderless">
+        <table id="table" class="table table-borderless">
 
           <tbody>
             <tr>
@@ -48,6 +48,7 @@
         </table>
       </div>
       <% end %>
+      <%= paginate @packages, class: "paginate" %>
     </div>
   </div>
 </div>

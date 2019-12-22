@@ -1,19 +1,11 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col">
-			<i class="far fa-thumbs-up fa-4x"></i><button type="button" class="btn btn-info" data-toggle="modal" data-target="#comment_modal" >配達員にコメントする</button>
-		</div>
-	</div>
-</div>
-
-<div class="container">
-	<div class="row">
 		<div class="col-lg-2"></div>
 		<div class="col-lg-8">
 			<h3>ユーザー情報編集</h3>
 			<%= form_for(@enduser) do |f| %>
-	        <table class="table">
+	        <table id="table" class="table">
 		        <tbody>
 		          <tr>
 		            <th>名前</th>

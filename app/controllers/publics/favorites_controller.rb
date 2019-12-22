@@ -1,7 +1,7 @@
 class Publics::FavoritesController < ApplicationController
 
 	def create
-		@favorite = Favorite.create(enduser_id: current_enduser.id, delivery_id: params[:favorite][:delivery_id])
+		@favorite = Favorite.create(enduser_id: current_enduser.id, delivery_id: params[:favorite][:delivery_id], delivery_person_id: params[:favorite][:delivery_person_id])
 		@aaa = Delivery.find(params[:favorite][:delivery_id])
 	end
 

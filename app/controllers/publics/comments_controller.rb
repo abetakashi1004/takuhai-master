@@ -6,6 +6,6 @@ class Publics::CommentsController < ApplicationController
 	end
 private
    def comment_params
-   	params.require(:comment).permit(:comment, :enduser_id, :delivery_id)
+   	params.require(:comment).permit(:comment, :enduser_id, :delivery_id, :delivery_person_id)
    end
 end

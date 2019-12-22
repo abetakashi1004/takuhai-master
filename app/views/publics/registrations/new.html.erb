@@ -6,7 +6,7 @@
     <h2>会員登録</h2>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
-      <table class="table table-borderless">
+      <table id="table" class="table table-borderless">
         <tbody>
           <tr>
             <th class="col-lg-2">名前</th>
@@ -14,7 +14,7 @@
           </tr>
           <tr>
             <th>郵便番号</th>
-            <td><%= f.text_field :postcode, autofocus: true, autocomplete: "postcode" %></td>
+            <td><%= f.text_field :postcode, autofocus: true, autocomplete: "postcode", placeholder: "（例）5430987" %></td>
           </tr>
           <tr>
             <th>住所</th>
@@ -22,7 +22,7 @@
           </tr>
           <tr>
             <th>電話番号</th>
-            <td><%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %></td>
+            <td><%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", placeholder: "（例）09012345678" %></td>
           </tr>
           <tr>
             <th>メールアドレス</th>

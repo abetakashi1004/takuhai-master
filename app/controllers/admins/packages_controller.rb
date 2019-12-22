@@ -10,7 +10,8 @@ class Admins::PackagesController < ApplicationController
   end
 
   def index
-    @packages = Package.search(params[:search]).order(id: "DESC")
+    @packages = Package.search(params[:search])
+    @packages = @packages.page(params[:page]).order(id: "DESC")
   end
 
   def show

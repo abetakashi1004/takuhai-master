@@ -4,7 +4,7 @@
 		<div class="col-lg-2"></div>
 		<div class="col-lg-8">
 		　　<h3>ユーザー情報</h3>
-	        <table class="table">
+	        <table id="table" class="table">
 		        <tbody>
 		          <tr>
 		            <th>名前</th>
@@ -43,7 +43,7 @@
 				<h3>配達履歴</h3>
 				<% @deliveries.each do |f| %>
 				<div class="packages">
-			        <table class="table">
+			        <table id="table" class="table">
 				        <tbody>
 				          <tr>
 				            <th>伝票番号</th>
@@ -63,7 +63,7 @@
 				            <td><%= f.created_at.strftime('%Y-%m-%d %H:%M') %></td>
 				          </tr>
 				          <tr>
-				            <th>配達担当ドライバー</th>
+				            <th id="mypage-driver" class="mypage">配達担当ドライバー</th>
 				            <td><%= f.delivery_person.name %>
 				            	<%= attachment_image_tag f.delivery_person, :face_photo, :fill, 80, 80, format: 'jpeg' %>
 				            </td>
@@ -128,6 +128,7 @@
 					      	<%= b.text_field :comment %>
 					      	<%= b.hidden_field :enduser_id , value: current_enduser.id %>
 					      	<%= b.hidden_field :delivery_id, value: f.id %>
+					      	<%= b.hidden_field :delivery_person_id, value: f.delivery_person.id %>
 					      	<%= b.submit "コメントする" , class:"btn btn-primary" %>
 					      	<% end %>
 				      	</div>

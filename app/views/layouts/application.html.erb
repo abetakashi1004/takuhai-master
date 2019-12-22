@@ -31,7 +31,7 @@
 
     <% elsif sales_office_signed_in? %>
       <li class="nav-list-item"><%= link_to"ログアウト",destroy_sales_office_session_path,method: :delete %></li>
-      <span class="log_in_name">営業所がログインしています</span>
+      <span class="log_in_name"><%= current_sales_office.sales_office_name %>センターがログインしています</span>
 
     <% elsif delivery_person_signed_in? %>
       <li class="nav-list-item"><%= link_to"コース選択",new_drivers_today_course_path %></li>
@@ -62,7 +62,19 @@
           display: none;
           }
           </style>
+      <% elsif request.original_url == 'http://localhost:3000/sales_offices/sign_up' %>
+          <style>
+          .nav-list-item{
+          display: none;
+          }
+          </style>
       <% elsif request.original_url == 'http://localhost:3000/delivery_people/sign_in' %>
+          <style>
+          .nav-list-item{
+          display: none;
+          }
+          </style>
+      <% elsif request.original_url == 'http://localhost:3000/delivery_people/sign_up' %>
           <style>
           .nav-list-item{
           display: none;

@@ -4,6 +4,6 @@
   <i class="fas fa-thumbs-up fa-3x"></i><% end %></span>
 <% else %>
 
-  <span><%= button_to favorites_path(favorite: {enduser_id: current_enduser.id, delivery_id: f.id}), class: 'good-button', remote: true do %>
+  <span><%= button_to favorites_path(favorite: {enduser_id: current_enduser.id, delivery_id: f.id, delivery_person_id: f.delivery_person.id }), class: 'good-button', remote: true do %>
   <i class="far fa-thumbs-up fa-4x"></i><% end %>
 <% end %></span>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_20_051101) do
+ActiveRecord::Schema.define(version: 2019_12_21_144838) do
 
   create_table "change_dates", force: :cascade do |t|
     t.integer "package_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2019_12_20_051101) do
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "delivery_person_id"
   end
 
   create_table "deliveries", force: :cascade do |t|
@@ -74,6 +75,7 @@ ActiveRecord::Schema.define(version: 2019_12_20_051101) do
     t.integer "delivery_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "delivery_person_id"
   end
 
   create_table "packages", force: :cascade do |t|

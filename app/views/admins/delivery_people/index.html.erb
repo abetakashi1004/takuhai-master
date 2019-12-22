@@ -15,9 +15,11 @@
           <tbody>
               <tr>
                 <% @delivery_people.each do |f| %>
+                <% delivery = Delivery.where(delivery_person_id: f.id) %>
                 <td><%= attachment_image_tag f, :face_photo, :fill, 120, 120, format: 'jpeg' %></td>
                 <td><p class="driver_name">名前　<%= f.name %></p>
                     <p class="driver_career">経歴　<%= f.career %>年目</p>
+                    <p>いいね：<%= f.favorites.count %>件　コメント：<%= f.comments.count %>件</p>
                 </td>
                 <td><%= link_to "ドライバー詳細", admins_delivery_person_path(f.id), class:"btn btn-default btn-block " %>
                   <%= link_to "編集", edit_admins_delivery_person_path(f.id), class:"btn btn-default btn-block " %>
@@ -29,6 +31,4 @@
     </div>
   </div>
 </div>
-
-
 
