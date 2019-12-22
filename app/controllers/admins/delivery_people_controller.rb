@@ -1,10 +1,11 @@
 class Admins::DeliveryPeopleController < ApplicationController
   def index
-    @delivery_people = DeliveryPerson.all
+    @delivery_people = DeliveryPerson.where(sales_office_id: current_sales_office.id)
   end
 
   def show
     @delivery_person = DeliveryPerson.find(params[:id])
+    @comments = Comment.where(delivery_person_id: @delivery_person.id)
   end
 
   def edit

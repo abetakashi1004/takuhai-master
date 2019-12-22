@@ -16,4 +16,16 @@ class Package < ApplicationRecord
             Package.all
         end
     end
+
+    def self.search2(search)
+        if search
+            Package.find_by(slip_number: "#{search}")
+        end
+    end
+
+    def self.search3(search)
+        if search
+            Package.where(phone_number: "#{search}")
+        end
+    end
 end

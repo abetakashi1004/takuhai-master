@@ -5,4 +5,5 @@ class Enduser < ApplicationRecord
          :recoverable, :rememberable, :validatable
    has_many :favorites
    has_many :comments
+
 end

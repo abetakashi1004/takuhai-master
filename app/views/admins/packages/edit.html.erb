@@ -3,7 +3,7 @@
   <div class="row">
   	    <div class="col col-lg-2"></div>
 		<div class="col col-lg-8">
-		<h1>荷物編集</h1>
+		<h2>荷物編集</h2>
 		<%= form_for(@package, url: admins_package_path(@package) ) do |f| %>
 			<table class="table table-borderless">
 				<tbody>
@@ -47,10 +47,12 @@
 						<th>時間指定</th>
 						<td><%= f.collection_select :time_zone_id, TimeZone.all, :id, :time_zone, :prompt => "選択してください"%></td>
 					</tr>
-
+					<tr>
+						<th></th>
+						<td><%= f.submit '商品を編集', class:"btn btn-primary" %></td>
+					</tr>
 				</tbody>
 			</table>
-			<%= f.submit '商品を編集', class:"btn btn-primary" %>
 		<% end %>
 		</div>
   </div>

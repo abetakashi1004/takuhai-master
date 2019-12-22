@@ -1,0 +1,32 @@
+
+  <div class="packages">
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <th class="col-lg-2">伝票番号</th>
+          <td><%= f.package.slip_number %></td>
+        </tr>
+        <tr>
+          <th>お届け先</th>
+          <td><%= f.package.destination %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= f.package.postcode.postcode %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= f.package.address %></td>
+        </tr>
+        <tr>
+          <th>荷主名</th>
+          <td><%= f.package.shipper.shipper_name %></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><%= link_to "詳細ページ", drivers_package_path(f.package.id), class:"btn btn-default " %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -6,6 +6,8 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/50e1df26d8.js" crossorigin="anonymous"></script>
   </head>
 
@@ -29,7 +31,7 @@
 
     <% elsif sales_office_signed_in? %>
       <li class="nav-list-item"><%= link_to"ログアウト",destroy_sales_office_session_path,method: :delete %></li>
-      <span class="log_in_name">営業所がログインしています</span>
+      <span class="log_in_name"><%= current_sales_office.sales_office_name %>センターがログインしています</span>
 
     <% elsif delivery_person_signed_in? %>
       <li class="nav-list-item"><%= link_to"コース選択",new_drivers_today_course_path %></li>
@@ -60,7 +62,19 @@
           display: none;
           }
           </style>
+      <% elsif request.original_url == 'http://localhost:3000/sales_offices/sign_up' %>
+          <style>
+          .nav-list-item{
+          display: none;
+          }
+          </style>
       <% elsif request.original_url == 'http://localhost:3000/delivery_people/sign_in' %>
+          <style>
+          .nav-list-item{
+          display: none;
+          }
+          </style>
+      <% elsif request.original_url == 'http://localhost:3000/delivery_people/sign_up' %>
           <style>
           .nav-list-item{
           display: none;

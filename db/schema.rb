@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_14_075412) do
+ActiveRecord::Schema.define(version: 2019_12_21_144838) do
 
   create_table "change_dates", force: :cascade do |t|
     t.integer "package_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2019_12_14_075412) do
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "delivery_person_id"
   end
 
   create_table "deliveries", force: :cascade do |t|
@@ -62,11 +63,9 @@ ActiveRecord::Schema.define(version: 2019_12_14_075412) do
     t.string "name"
     t.integer "postcode"
     t.string "address"
-    t.integer "level"
-    t.integer "point"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "phone_number"
+    t.string "phone_number"
     t.index ["email"], name: "index_endusers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_endusers_on_reset_password_token", unique: true
   end
@@ -76,6 +75,7 @@ ActiveRecord::Schema.define(version: 2019_12_14_075412) do
     t.integer "delivery_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "delivery_person_id"
   end
 
   create_table "packages", force: :cascade do |t|
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 2019_12_14_075412) do
     t.boolean "complete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "phone_number"
+    t.string "phone_number"
   end
 
   create_table "postcodes", force: :cascade do |t|
@@ -135,9 +135,9 @@ ActiveRecord::Schema.define(version: 2019_12_14_075412) do
     t.string "shipper_name"
     t.integer "postcode"
     t.string "address"
-    t.integer "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "phone_number"
   end
 
   create_table "sizes", force: :cascade do |t|

@@ -7,12 +7,30 @@
 }
 
 .decision-boton{
-	width:80px;
+	width:120px;
 	height:40px;
 	border:2px solid black;
 	text-align: center;
 	line-height:40px;
-	font-size:15px;
 	border-radius: 5px;
 	margin-top: 10px;
+	font-size: 20px;
+}
+
+.delivery-button{
+	width:250px;
+	height: 45px;
+	margin-top: 20px;
+	font-size: 20px;
+	border-radius: 5px;
+}
+
+#delivery_status_不在{
+	vertical-align:0.2em;
+	margin-right: 10px;
+}
+
+#delivery_status_配達完了{
+	vertical-align:0.2em;
+	margin-right: 10px;
 }

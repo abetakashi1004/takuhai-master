@@ -4,4 +4,5 @@ class Delivery < ApplicationRecord
 	has_many :favorites
 	has_many :comments
 	enum status: { 配達完了: 1, 不在: 2}
+
 end

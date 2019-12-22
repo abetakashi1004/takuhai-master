@@ -42,7 +42,6 @@ body,
  width:100%;
 }
 
-
 .row{
     width:80% ;
 	padding: 30px 30px;
@@ -53,8 +52,6 @@ body,
 	background-color:#ffda00;
 }
 
-.container{
-}
 .nav-list-item {
 	display: inline-block;
 	font-weight: 700;
@@ -64,7 +61,6 @@ body,
 	background-color: white;
 	box-shadow: 0px 0px 0px 5px #d3d3d3;
 	float:right;
-	
 	text-align:center;
 }
 .nav-list-item-bottom{
@@ -82,18 +78,16 @@ body,
 	display:inline-block;
 	box-shadow: 0px 0px 0px 5px #d3d3d3;
 	font-family:serif;
-
 }
 .log_in_name{
 	float:right;
+	width:380px;
+	text-align: right;
 	font-size:20px;
-	margin-top:40px;
+	margin-top:50px;
 }
 
-input[type="password"] {
-	width: 300px;
-   }
-.address-place{
+#sales_office_email, #enduser_email, #enduser_address, input[type="password"], .address-place{
 	width:300px;
 }
 
@@ -107,3 +101,6 @@ input[type="password"] {
 	margin :20px 0 ;
 }
 
+#table th {
+	vertical-align:middle;
+}
