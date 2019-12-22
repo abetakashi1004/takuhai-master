@@ -1,4 +1,4 @@
-class Admins::PackagesController < ApplicationController
+class Admins::PackagesController < Admins::ApplicationController
   def new
     @package = Package.new
   end

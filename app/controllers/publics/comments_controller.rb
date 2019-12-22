@@ -1,4 +1,4 @@
-class Publics::CommentsController < ApplicationController
+class Publics::CommentsController < Publics::ApplicationController
 	def create
 		comment = Comment.new(comment_params)
 		comment.save!

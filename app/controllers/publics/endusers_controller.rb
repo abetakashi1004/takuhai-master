@@ -1,4 +1,4 @@
-class Publics::EndusersController < ApplicationController
+class Publics::EndusersController < Publics::ApplicationController
 
   def show
     @redelivery = Redelivery.new

@@ -1,4 +1,4 @@
-class Drivers::TodayCoursesController < ApplicationController
+class Drivers::TodayCoursesController < Drivers::ApplicationController
   def new
   	@today_course = TodayCourse.new
   	@poctcodes = Postcode.all

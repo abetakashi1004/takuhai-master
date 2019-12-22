@@ -1,4 +1,4 @@
-class Admins::DeliveryPeopleController < ApplicationController
+class Admins::DeliveryPeopleController < Admins::ApplicationController
   def index
     @delivery_people = DeliveryPerson.where(sales_office_id: current_sales_office.id)
   end

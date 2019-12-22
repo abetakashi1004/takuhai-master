@@ -1,5 +1,4 @@
-class Drivers::TakeoutsController < ApplicationController
-
+class Drivers::TakeoutsController < Drivers::ApplicationController
   def complete
     if params[:search].nil?#検索かかっているかどうか
       @completes = Takeout.where(delivery_person_id: current_delivery_person.id)

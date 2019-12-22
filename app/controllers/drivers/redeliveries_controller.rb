@@ -1,4 +1,4 @@
-class Drivers::RedeliveriesController < ApplicationController
+class Drivers::RedeliveriesController < Drivers::ApplicationController
 	def update
 		redelivery = Redelivery.find(params[:id])
 		redelivery.update_attributes(redelivery_params)

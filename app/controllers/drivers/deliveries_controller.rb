@@ -1,4 +1,4 @@
-class Drivers::DeliveriesController < ApplicationController
+class Drivers::DeliveriesController < Drivers::ApplicationController
   def new
   	@delivery = Delivery.new
   	@takeout = Takeout.where(delivery_person_id: current_delivery_person.id)

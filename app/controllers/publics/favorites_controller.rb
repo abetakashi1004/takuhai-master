@@ -1,4 +1,4 @@
-class Publics::FavoritesController < ApplicationController
+class Publics::FavoritesController < Publics::ApplicationController
 
 	def create
 		@favorite = Favorite.create(enduser_id: current_enduser.id, delivery_id: params[:favorite][:delivery_id], delivery_person_id: params[:favorite][:delivery_person_id])

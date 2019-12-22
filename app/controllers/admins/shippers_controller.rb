@@ -1,4 +1,4 @@
-class Admins::ShippersController < ApplicationController
+class Admins::ShippersController < Admins::ApplicationController
 
   def new
   	@shipper = Shipper.new

@@ -6,4 +6,10 @@ class Enduser < ApplicationRecord
    has_many :favorites
    has_many :comments
 
+   validates :email, presence:true
+   validates :name, presence:true
+   validates :name, length: { maximum: 20 }
+   validates :postcode, presence:true
+   validates :address, presence:true
+   validates :phone_number, presence:true
 end
