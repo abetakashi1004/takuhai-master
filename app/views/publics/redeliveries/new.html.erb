@@ -1,8 +1,9 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">      <p class="success-message"><%= flash.now[:message] %></p>
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <p class="success-message"><%= flash.now[:message] %></p>
       <h2>再配達依頼フォーム</h2>
       <%= form_tag(redeliveries_search_path, :method => 'get') do %>
       <label  class="serach-place">伝票番号を入力してください</label><br>

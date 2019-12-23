@@ -3,6 +3,7 @@
 	<div class="row">
 		<div class="col-lg-2"></div>
 		<div class="col-lg-8">
+			<p class="not_create"><%= flash.now[:not_comment] %></p>
 		　　<h3>ユーザー情報</h3>
 	        <table id="table" class="table">
 		        <tbody>
@@ -129,7 +130,7 @@
 					  <div class="modal-dialog" role="document">
 					    <div class="modal-content">
 					      <div class="modal-header">
-					        <h3 class="modal-title" id="Modal">コメントフォーム</h3>
+					        <h3 class="modal-title" id="Modal">コメントフォーム（最大１５０文字）</h3>
 					        </button>
 					      </div>
 					      <div class="modal-body">

@@ -5,7 +5,9 @@ class Publics::EndusersController < Publics::ApplicationController
     @comment = Comment.new
     @time_zones = TimeZone.all
   	@enduser = Enduser.find(params[:id])
-  	aaa = []
+      if @enduser.id != current_enduser.id
+        redirect_to enduser_path(current_enduser.id)
+      end
   	packages = Package.where(phone_number: @enduser.phone_number)
   	packages.each do |a|
   		@deliveries = Delivery.where(package_id: a.id).order(created_at: "DESC")
@@ -17,12 +19,20 @@ class Publics::EndusersController < Publics::ApplicationController
   end
 
   def update
+    @enduser = Enduser.find(params[:id])
     enduser = Enduser.find(params[:id])
-    enduser.update(update_params)
-    redirect_to enduser_path(params[:id])
+    if enduser.update(update_params)
+      redirect_to enduser_path(params[:id])
+    else
+      flash.now[:not_edit] = "編集できませんでした"
+      render'edit'
+    end
   end
 
   def destroy
+    enduser = Enduser.find(params[:id])
+    enduser.destroy
+    redirect_to root_path
   end
 
 private

@@ -1,8 +1,12 @@
 class Publics::CommentsController < Publics::ApplicationController
+
 	def create
 		comment = Comment.new(comment_params)
-		comment.save!
-		redirect_to enduser_path(current_enduser.id)
+		if comment.save
+			redirect_to enduser_path(current_enduser.id)
+		else
+			redirect_to enduser_path(current_enduser.id), flash: {not_comment: "コメントに失敗しました"}
+		end
 	end
 private
    def comment_params

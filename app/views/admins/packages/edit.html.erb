@@ -4,6 +4,7 @@
   	    <div class="col col-lg-2"></div>
 		<div class="col col-lg-8">
 		<h2>荷物編集</h2>
+		<p class="not_edit"><%= flash.now[:not_edit] %></p>
 		<%= form_for(@package, url: admins_package_path(@package) ) do |f| %>
 			<table class="table table-borderless">
 				<tbody>

@@ -1,4 +1,5 @@
 class Admins::DeliveryPeopleController < Admins::ApplicationController
+
   def index
     @delivery_people = DeliveryPerson.where(sales_office_id: current_sales_office.id)
   end
@@ -13,9 +14,14 @@ class Admins::DeliveryPeopleController < Admins::ApplicationController
   end
 
   def update
+    @delivery_person = DeliveryPerson.find(params[:id])
     delivery_person = DeliveryPerson.find(params[:id])
-    delivery_person.update(delivery_person_params)
-    redirect_to admins_delivery_person_path(delivery_person.id)
+    if delivery_person.update(delivery_person_params)
+      redirect_to admins_delivery_person_path(delivery_person.id)
+    else
+      flash.now[:not_edit] = "編集できませんでした"
+      render'edit'
+    end
   end
 
   def destroy

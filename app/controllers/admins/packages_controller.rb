@@ -1,12 +1,18 @@
 class Admins::PackagesController < Admins::ApplicationController
+
   def new
     @package = Package.new
   end
 
   def create
+    @package = Package.new
     package = Package.new(package_params)
-    package.save
-    redirect_to admins_homes_path
+    if package.save
+      redirect_to admins_homes_path
+    else
+      flash.now[:not_create] = "登録できませんでした"
+      render'new'
+    end
   end
 
   def index
@@ -26,9 +32,14 @@ class Admins::PackagesController < Admins::ApplicationController
   end
 
   def update
+    @package = Package.find(params[:id])
     package = Package.find(params[:id])
-    package.update(package_params)
-    redirect_to admins_package_path(package.id)
+    if package.update(package_params)
+      redirect_to admins_package_path(package.id)
+    else
+      flash.now[:not_edit] = "編集できませんでした"
+      render'edit'
+    end
   end
 
   def destroy

@@ -4,6 +4,7 @@
   	    <div class="col col-lg-2"></div>
 		<div class="col col-lg-8">
 		<h2>荷主登録</h2>
+		<p class="not_create"><%= flash.now[:not_create] %></p>
 		<%= form_for(@shipper, url: admins_shippers_path) do |f| %>
 			<table class="table table-borderless">
 				<tbody>

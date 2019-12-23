@@ -30,7 +30,6 @@ Rails.application.routes.draw do
     get 'homes/plus'
     get 'redeliveries/search'
     get 'change_dates/search'
-    
   end
 
   namespace :drivers do
@@ -41,6 +40,7 @@ Rails.application.routes.draw do
     resources :deliveries, only:[:new, :create, :destroy]
     resources :today_courses,only:[:new, :create]
     resources :redeliveries,only:[:update]
+    resources :change_dates,only:[:update]
   end
 
   namespace :admins do

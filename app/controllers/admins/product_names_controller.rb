@@ -5,9 +5,14 @@ class Admins::ProductNamesController < Admins::ApplicationController
   end
 
   def create
+    @product_name = ProductName.new
   	product_name = ProductName.new(product_name_params)
-  	product_name.save
-  	redirect_to admins_homes_path
+  	if product_name.save
+      redirect_to admins_homes_path
+    else
+      flash.now[:not_create] = "空白では登録できません"
+      render'new'
+    end
   end
 
 private
