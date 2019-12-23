@@ -88,6 +88,7 @@ body,
 	margin:15px;
 }
 
+
 .log_in_name{
 	float:right;
 	width:380px;
@@ -96,7 +97,7 @@ body,
 	margin-top:50px;
 }
 
-#sales_office_email, #enduser_email, #enduser_address, input[type="password"], .address-place{
+#sales_office_email, #enduser_email, #enduser_address, input[type="password"], .address-place, #enduser_name, #sales_office_sales_office_name, #delivery_person_name{
 	width:300px;
 }
 
@@ -120,16 +121,4 @@ body,
 	background-color:white;
 	border: 1px solid black;
 	margin: 20px 0;
-}
-.col-lg-8{
-    background-color: #ffda00;
-    margin: 10px 0 ;
-    border: 2px solid black;
-    border-radius: 5px;
-    padding: 15px 0;
-}
-
-.col-md-8{
-	margin: 0 auto;
-	text-align: center;
 }

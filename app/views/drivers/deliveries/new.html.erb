@@ -3,10 +3,10 @@
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 			<h1 class="main-title">配達報告</h1>
-			<h3>持ち出し<%= @takeout.count %>件</h3>
-			<h3>配達完了<%= @completes.count %>件</h3>
-			<h3>戻り　　<%= @backs.count %>件</h3>
-			<h3>残　　　<%= @yets.count  %>件</h3>
+			<h3><span class="delivery_count">持ち出し</span><%= @takeout.count %>件</h3>
+			<h3><span class="delivery_count">配達完了</span><%= @completes.count %>件</h3>
+			<h3><span class="delivery_count">戻り　　</span><%= @backs.count %>件</h3>
+			<h3><span class="delivery_count">残　　　</span><%= @yets.count  %>件</h3>
 			<p class="not_delivery"><%= flash.now[:not_delivery] %></p>
 			<%= form_for(@delivery, url: drivers_deliveries_path) do |f| %>
 			<%= f.hidden_field :delivery_person_id, value: current_delivery_person.id %>

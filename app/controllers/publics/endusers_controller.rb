@@ -10,7 +10,7 @@ class Publics::EndusersController < Publics::ApplicationController
       end
   	packages = Package.where(phone_number: @enduser.phone_number)
   	packages.each do |a|
-  		@deliveries = Delivery.where(package_id: a.id).order(created_at: "DESC")
+  		@deliveries = Delivery.where(package_id: a.id).page(params[:page]).order(created_at: "DESC")
   	end
   end
 
