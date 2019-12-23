@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_21_144838) do
+ActiveRecord::Schema.define(version: 2019_12_05_083538) do
 
   create_table "change_dates", force: :cascade do |t|
     t.integer "package_id"
@@ -27,7 +27,14 @@ ActiveRecord::Schema.define(version: 2019_12_21_144838) do
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "delivery_person_id"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.integer "post_code_id"
+    t.integer "sales_office_id"
+    t.string "course_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "deliveries", force: :cascade do |t|
@@ -47,6 +54,7 @@ ActiveRecord::Schema.define(version: 2019_12_21_144838) do
     t.integer "sales_office_id"
     t.string "name"
     t.string "face_photo_id"
+    t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "career"
@@ -63,6 +71,8 @@ ActiveRecord::Schema.define(version: 2019_12_21_144838) do
     t.string "name"
     t.integer "postcode"
     t.string "address"
+    t.integer "level"
+    t.integer "point"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "phone_number"
@@ -70,12 +80,29 @@ ActiveRecord::Schema.define(version: 2019_12_21_144838) do
     t.index ["reset_password_token"], name: "index_endusers_on_reset_password_token", unique: true
   end
 
+  create_table "ensusers", force: :cascade do |t|
+    t.string "email"
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "phone_number_id"
+    t.string "name"
+    t.integer "postcode"
+    t.string "address"
+    t.integer "level"
+    t.integer "point"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_ensusers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_ensusers_on_reset_password_token", unique: true
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.integer "enduser_id"
     t.integer "delivery_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "delivery_person_id"
   end
 
   create_table "packages", force: :cascade do |t|
@@ -90,6 +117,12 @@ ActiveRecord::Schema.define(version: 2019_12_21_144838) do
     t.date "delivery_date"
     t.boolean "absence", default: false
     t.boolean "complete", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "phone_number"
+  end
+
+  create_table "phone_numbers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "phone_number"
@@ -124,6 +157,7 @@ ActiveRecord::Schema.define(version: 2019_12_21_144838) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "password"
     t.string "sales_office_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

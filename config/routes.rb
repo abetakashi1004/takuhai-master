@@ -19,18 +19,13 @@ Rails.application.routes.draw do
   registrations: 'publics/registrations'
 }
   scope module: :publics do
+    resources :deliveries, only: [:index]
     resources :endusers, only:[:show, :edit, :update, :destroy]
     resources :change_dates, only:[:new, :create]
     resources :redeliveries, only:[:new, :create]
     resources :homes, only:[:index]
-    resources :comments, only:[:create]
-    resources :favorites, only:[:create]
-    delete '/favorites' => 'favorites#destroy'
     get 'homes/about'
     get 'homes/plus'
-    get 'redeliveries/search'
-    get 'change_dates/search'
-    
   end
 
   namespace :drivers do
@@ -40,7 +35,6 @@ Rails.application.routes.draw do
     get 'takeouts/complete'
     resources :deliveries, only:[:new, :create, :destroy]
     resources :today_courses,only:[:new, :create]
-    resources :redeliveries,only:[:update]
   end
 
   namespace :admins do

@@ -1,2 +1,0 @@
-module Drivers::RedeliveriesHelper
-end

@@ -1,25 +1,2 @@
-
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <ul class="tabnav">
-          <li><a href="#tab1">持出一覧</a></li>
-          <li><a href="#tab2">変更依頼</a></li>
-          <li><a href="#tab3">午前中</a></li>
-          <li><a href="#tab4">14時〜16時</a></li>
-          <li><a href="#tab5">16時〜18時</a></li>
-          <li><a href="#tab6">18時〜20時</a></li>
-          <li><a href="#tab7">19時〜21時</a></li>
-      </ul>
-      <div class="tabcontent">
-          <div id="tab1"><%= render 'drivers/takeouts/takeout_all', takeouts: @takeouts %></div>
-          <div id="tab2"><%= render 'drivers/takeouts/change', redeliveries: @redeliveries , change_dates: @change_dates %></div>
-          <div id="tab3"><%= render 'drivers/takeouts/gozen' , takeouts: @takeouts %></div>
-          <div id="tab4"><%= render 'drivers/takeouts/14_16' , takeouts: @takeouts %></div>
-          <div id="tab5"><%= render 'drivers/takeouts/16_18' , takeouts: @takeouts %></div>
-          <div id="tab6"><%= render 'drivers/takeouts/18_20' , takeouts: @takeouts %></div>
-          <div id="tab7"><%= render 'drivers/takeouts/19_21' , takeouts: @takeouts %></div>
-      </div>
-    </div>
-  </div>
-</div>
+<h1>Drivers::Takeouts#index</h1>
+<p>Find me in app/views/drivers/takeouts/index.html.erb</p>

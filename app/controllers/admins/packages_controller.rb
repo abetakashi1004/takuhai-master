@@ -10,31 +10,18 @@ class Admins::PackagesController < ApplicationController
   end
 
   def index
-    @packages = Package.search(params[:search])
-    @packages = @packages.page(params[:page]).order(id: "DESC")
   end
 
   def show
-    @package = Package.find(params[:id])
-    @change_dates = ChangeDate.where(package_id: @package.id)
-    @redeliveries = Redelivery.where(package_id: @package.id)
-    @deliveries = Delivery.where(package_id: @package.id)
   end
 
   def edit
-    @package = Package.find(params[:id])
   end
 
   def update
-    package = Package.find(params[:id])
-    package.update(package_params)
-    redirect_to admins_package_path(package.id)
   end
 
   def destroy
-    package = Package.find(params[:id])
-    package.destroy
-    redirect_to admins_packages_path
   end
 
 private

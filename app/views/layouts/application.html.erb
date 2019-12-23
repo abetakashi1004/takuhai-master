@@ -6,8 +6,6 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/50e1df26d8.js" crossorigin="anonymous"></script>
   </head>
 
@@ -19,37 +17,23 @@
     <% elsif sales_office_signed_in? %>
     <div class="app_title"><h1><%= link_to "宅配マスター", admins_homes_path %></h1></div>
     <% elsif delivery_person_signed_in? %>
-    <div class="app_title"><h1><%= link_to "宅配マスター", new_drivers_delivery_path %></h1></div>
+    <h1>宅配マスター</h1>
     <% else %>
     <div class="app_title"><h1><%= link_to "宅配マスター", root_path %></h1></div>
     <% end %>
 
     <% if enduser_signed_in? %>
-      <li class="nav-list-item"><%= link_to"ログアウト",destroy_enduser_session_path,method: :delete %></li>
-      <li class="nav-list-item"><%= link_to"マイページ",enduser_path(current_enduser) %></li>
-      <span class="log_in_name"><%= current_enduser.name %>さんがログインしています</span>
+      <h3><%= current_enduser.name %>さんがログインしています</h3>
+      <%= link_to"ログアウト",destroy_enduser_session_path,method: :delete %></li>
 
     <% elsif sales_office_signed_in? %>
-      <li class="nav-list-item"><%= link_to"ログアウト",destroy_sales_office_session_path,method: :delete %></li>
-      <span class="log_in_name"><%= current_sales_office.sales_office_name %>センターがログインしています</span>
+      <h3>営業所がログインしています</h3>
+      <%= link_to"ログアウト",destroy_sales_office_session_path,method: :delete %></li>
 
     <% elsif delivery_person_signed_in? %>
-      <li class="nav-list-item"><%= link_to"コース選択",new_drivers_today_course_path %></li>
-      <li class="nav-list-item"><%= link_to"持ち出し登録",new_drivers_takeout_path %></li>
-      <li class="nav-list-item"><%= link_to"完了荷物一覧",drivers_takeouts_complete_path %></li><br>
-      <li class="nav-list-item nav-list-item-bottom"><%= link_to"マイページ",drivers_delivery_person_path(current_delivery_person) %></li>
-      <li class="nav-list-item nav-list-item-bottom"><%= link_to"配達報告",new_drivers_delivery_path %></li>
-      <li class="nav-list-item nav-list-item-bottom"><%= link_to"持出荷物一覧",drivers_takeouts_path %></li>
-          <style>
-            header {
-            height: 200px; }
-            .app_title{
-              margin:45px 0 0 40px ;
-            }
-            .nav-list-item{
-              width:150px;
-            }
-          </style>
+      <h3>ドライバーがログインしています</h3>
+      <%= link_to"業務終了",destroy_delivery_person_session_path,method: :delete %></li>
+
     <% else %>
             <li class="nav-list-item"><%= link_to "ログイン", enduser_session_path %></li>
             <li class="nav-list-item"><%= link_to "会員登録すると？", homes_plus_path %></li>
@@ -62,19 +46,7 @@
           display: none;
           }
           </style>
-      <% elsif request.original_url == 'http://localhost:3000/sales_offices/sign_up' %>
-          <style>
-          .nav-list-item{
-          display: none;
-          }
-          </style>
       <% elsif request.original_url == 'http://localhost:3000/delivery_people/sign_in' %>
-          <style>
-          .nav-list-item{
-          display: none;
-          }
-          </style>
-      <% elsif request.original_url == 'http://localhost:3000/delivery_people/sign_up' %>
           <style>
           .nav-list-item{
           display: none;
@@ -87,9 +59,7 @@
 
   </body>
   <footer>
-    <% if delivery_person_signed_in? %>
-    <li class="nav-list-item nav-list-footer"><%= link_to"業務終了",destroy_delivery_person_session_path,method: :delete, "data-confirm" => "本日の業務を終了しますか？"  %></li>
-    <% end %>
+    <h3>フッター</h3>
   </footer>
 </html>
 

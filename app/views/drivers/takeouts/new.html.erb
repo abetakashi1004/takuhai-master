@@ -1,17 +1,2 @@
-
-<div class="container">
-	 <div class="row">
-		<div class="col-md-3"></div>
-		<div class="col-md-6">
-			<h1>持ち出し登録</h1>
-			<p class="not_takeout"><%= flash.now[:not_takeout] %></p>
-			<p class="takeout_complete"><%= flash.now[:takeout_complete] %></p>
-　　　　　　　<%= form_for(@takeout, url: drivers_takeouts_path) do |f| %>
-            <%= f.label :伝票番号を入力してください %><br>
-			<%= f.text_field :package_id, placeholder:"半角数字で入力してください" %>
-			<%= f.hidden_field :delivery_person_id, value: current_delivery_person.id %>
-			<div><%= f.submit '登録', class: ' btn-primary delivery-button' %></div>
-			<% end %>
-		</div>
-	</div>
-</div>
+<h1>Drivers::Takeouts#new</h1>
+<p>Find me in app/views/drivers/takeouts/new.html.erb</p>
