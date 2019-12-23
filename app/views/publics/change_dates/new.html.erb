@@ -3,7 +3,8 @@
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
-      <p class="success-message"><%= flash.now[:message] %></p>
+      <p class="change_date_success"><%= flash.now[:change_date_success] %></p>
+      <p class="change_date_error"><%= flash.now[:change_date_error] %></p>
       <h2>配達日付変更依頼フォーム</h2>
       <%= form_tag(change_dates_search_path, :method => 'get') do %>
       <label  class="serach-place">荷物に設定した電話番号を入力してください</label><br>

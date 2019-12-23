@@ -4,7 +4,7 @@
     <div class="col col-lg-2"></div>
     <div class="col col-lg-8">
     <h2>ドライバー編集</h2>
-    <p class="not_edit"><%= flash.now[:not_edit] %></p>
+    <p class="admins_error"><%= flash.now[:admins_error] %></p>
       <%= form_for(@delivery_person, url: admins_delivery_person_path(@delivery_person) ) do |f| %>
       <table class="table table-borderless">
         <tbody>

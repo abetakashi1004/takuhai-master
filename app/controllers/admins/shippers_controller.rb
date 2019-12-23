@@ -10,7 +10,7 @@ class Admins::ShippersController < Admins::ApplicationController
   	if shipper.save
       redirect_to admins_homes_path
     else
-      flash.now[:not_create] = "登録できませんでした"
+      flash.now[:admins_error] = "登録できませんでした"
       render'new'
     end
   end

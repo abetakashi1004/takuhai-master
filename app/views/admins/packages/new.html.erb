@@ -4,7 +4,7 @@
   	    <div class="col col-lg-2"></div>
 		<div class="col col-lg-8">
 		<h2>荷物登録</h2>
-		<p class="not_create"><%= flash.now[:not_create] %></p>
+		<p class="admins_error"><%= flash.now[:admins_error] %></p>
 		<%= form_for(@package, url: admins_packages_path ) do |f| %>
 			<table class="table table-borderless">
 				<tbody>
@@ -52,7 +52,6 @@
 						<th></th>
 						<td><%= f.submit '商品を追加', class:"btn btn-primary" %></td>
 					</tr>
-
 				</tbody>
 			</table>
 		<% end %>

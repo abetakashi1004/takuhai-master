@@ -7,7 +7,7 @@
 			<h3>配達完了<%= @completes.count %>件</h3>
 			<h3>戻り　　<%= @backs.count %>件</h3>
 			<h3>残　　　<%= @yets.count  %>件</h3>
-			<p class="not_takeout"><%= flash.now[:not_delivery] %></p>
+			<p class="not_delivery"><%= flash.now[:not_delivery] %></p>
 			<%= form_for(@delivery, url: drivers_deliveries_path) do |f| %>
 			<%= f.hidden_field :delivery_person_id, value: current_delivery_person.id %>
 			<%= f.label :伝票番号を入力してください %><br>

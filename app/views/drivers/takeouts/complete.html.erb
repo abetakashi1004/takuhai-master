@@ -4,6 +4,7 @@
     <div class="col col-lg-2"></div>
     <div class="col col-lg-8">
       <h2>配達完了した荷物</h2>
+      <p class="delete_complete"><%= flash.now[:delete_complete] %></p>
       <span class="search">
           <%= form_tag drivers_takeouts_complete_path ,:method => 'get' do %>
           <%= text_field_tag :search, params[:search] ,placeholder:"お届け先で検索"  %>

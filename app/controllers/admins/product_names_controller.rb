@@ -10,7 +10,7 @@ class Admins::ProductNamesController < Admins::ApplicationController
   	if product_name.save
       redirect_to admins_homes_path
     else
-      flash.now[:not_create] = "空白では登録できません"
+      flash.now[:admins_error] = "空白では登録できません"
       render'new'
     end
   end

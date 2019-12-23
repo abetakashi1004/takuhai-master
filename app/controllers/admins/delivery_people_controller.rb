@@ -17,9 +17,9 @@ class Admins::DeliveryPeopleController < Admins::ApplicationController
     @delivery_person = DeliveryPerson.find(params[:id])
     delivery_person = DeliveryPerson.find(params[:id])
     if delivery_person.update(delivery_person_params)
-      redirect_to admins_delivery_person_path(delivery_person.id)
+      redirect_to admins_delivery_person_path(delivery_person.id), flash: {admins_success: "ドライバー情報を編集しました"}
     else
-      flash.now[:not_edit] = "編集できませんでした"
+      flash.now[:admins_error] = "編集できませんでした"
       render'edit'
     end
   end

@@ -22,9 +22,9 @@ class Publics::EndusersController < Publics::ApplicationController
     @enduser = Enduser.find(params[:id])
     enduser = Enduser.find(params[:id])
     if enduser.update(update_params)
-      redirect_to enduser_path(params[:id])
+      redirect_to enduser_path(params[:id]), flash: {comment_success: "ユーザー情報を編集しました"}
     else
-      flash.now[:not_edit] = "編集できませんでした"
+      flash.now[:enduser_edit_error] = "編集できませんでした"
       render'edit'
     end
   end

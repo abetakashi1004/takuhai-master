@@ -53,7 +53,7 @@ class Drivers::DeliveriesController < Drivers::ApplicationController
   	package.update(complete: false)
   	takeout = Takeout.find_by(package_id: package.id, delivery_person_id: current_delivery_person.id)
   	takeout.update(status: 1)
-  	redirect_to drivers_takeouts_complete_path
+  	redirect_to drivers_takeouts_complete_path, flash: {delete_complete: "配達報告を取り消しました"}
   end
 
 private

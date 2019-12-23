@@ -7,11 +7,16 @@ class Admins::PackagesController < Admins::ApplicationController
   def create
     @package = Package.new
     package = Package.new(package_params)
-    if package.save
-      redirect_to admins_homes_path
-    else
-      flash.now[:not_create] = "登録できませんでした"
+    if Package.where(slip_number: params[:package][:slip_number]).exists?
+      flash.now[:admins_error] = "その伝票番号はすでに登録済みです"
       render'new'
+    else
+      if package.save
+        redirect_to admins_packages_path
+      else
+        flash.now[:admins_error] = "登録できませんでした"
+        render'new'
+      end
     end
   end
 
@@ -37,7 +42,7 @@ class Admins::PackagesController < Admins::ApplicationController
     if package.update(package_params)
       redirect_to admins_package_path(package.id)
     else
-      flash.now[:not_edit] = "編集できませんでした"
+      flash.now[:admins_error] = "編集できませんでした"
       render'edit'
     end
   end
@@ -45,7 +50,7 @@ class Admins::PackagesController < Admins::ApplicationController
   def destroy
     package = Package.find(params[:id])
     package.destroy
-    redirect_to admins_packages_path
+    redirect_to admins_packages_path, flash: {admins_success: "荷物を削除しました"}
   end
 
 private

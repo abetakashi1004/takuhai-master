@@ -4,7 +4,7 @@
   	    <div class="col col-lg-2"></div>
 		<div class="col col-lg-8">
 		<h2>荷主登録</h2>
-		<p class="not_create"><%= flash.now[:not_create] %></p>
+		<p class="admins_error"><%= flash.now[:admins_error] %></p>
 		<%= form_for(@shipper, url: admins_shippers_path) do |f| %>
 			<table class="table table-borderless">
 				<tbody>
@@ -24,7 +24,7 @@
 						<th>電話番号</th>
 						<td><%= f.text_field :phone_number, placeholder: "（例）09012345678" %></td>
 					</tr>
-										<tr>
+					<tr>
 						<th></th>
 						<td><%= f.submit '荷主を登録', class: 'btn btn-primary submit_botton' %></td>
 					</tr>
