@@ -6,7 +6,7 @@ class Admins::DeliveryPeopleController < Admins::ApplicationController
 
   def show
     @delivery_person = DeliveryPerson.find(params[:id])
-    @comments = Comment.where(delivery_person_id: @delivery_person.id).page(params[:page]).per(30)
+    @comments = Comment.where(delivery_person_id: @delivery_person.id).page(params[:page]).per(30).reverse_order
   end
 
   def edit

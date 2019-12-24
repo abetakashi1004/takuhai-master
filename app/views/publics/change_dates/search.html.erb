@@ -8,9 +8,13 @@
 				　　<% @packages.each do |a| %>
 						<div class="packages">
 						    <table class="table table-borderless">
+					          <colgroup>
+					            <col width="20%">
+					            <col width="80%">
+					          </colgroup>
 						      <tbody>
 						        <tr>
-						          <th class="col-lg-2">伝票番号</th>
+						          <th>伝票番号</th>
 						          <td><%= a.slip_number %></td>
 						        </tr>
 						        <tr>

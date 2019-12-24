@@ -9,7 +9,7 @@ class Drivers::TodayCoursesController < Drivers::ApplicationController
     @today_course = TodayCourse.new
     @poctcodes = Postcode.where(sales_office_id:current_delivery_person.sales_office.id)
     if params[:today_course].nil?
-      flash.now[:not_create] = "コースを選択してください"
+      flash.now[:not_course] = "コースを選択してください"
       render'new'
     else
       select_posecodes = params[:today_course][:postcode_id]

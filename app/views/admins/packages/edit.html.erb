@@ -1,60 +1,60 @@
 
 <div class="container">
   <div class="row">
-  	    <div class="col col-lg-2"></div>
-		<div class="col col-lg-8">
-		<h2>荷物編集</h2>
-		<p class="admins_error"><%= flash.now[:admins_error] %></p>
-		<%= form_for(@package, url: admins_package_path(@package) ) do |f| %>
-			<table class="table table-borderless">
-				<tbody>
-					<tr>
-						<th class="col-lg-2">伝票番号</th>
-						<td><%= f.text_field :slip_number %></td>
-					</tr>
-					<tr>
-						<th>お届け先</th>
-						<td><%= f.text_field :destination %></td>
-					</tr>
-					<tr>
-						<th>郵便番号</th>
-						<td><%= f.collection_select :postcode_id, Postcode.all, :id, :postcode, :prompt => "選択してください"%></td>
-					</tr>
-					<tr>
-						<th>住所</th>
-						<td><%= f.text_field :address %></td>
-					</tr>
-					<tr>
-						<th>電話番号</th>
-						<td><%= f.text_field :phone_number %></td>
-					</tr>
-					<tr>
-						<th>サイズ</th>
-						<td><%= f.collection_select :size_id, Size.all, :id, :size, :prompt => "選択してください"%></td>
-					</tr>
-					<tr>
-						<th>荷主</th>
-						<td><%= f.collection_select :shipper_id, Shipper.all, :id, :shipper_name, :prompt => "選択してください"%></td>
-					</tr>
-					<tr>
-						<th>品名</th>
-						<td><%= f.collection_select :product_name_id, ProductName.all, :id, :product_name, :prompt => "選択してください"%></td>
-					</tr>
-					<tr>
-						<th>配達日</th>
-						<td><%= f.date_field :delivery_date %></td>
-					</tr>
-					<tr>
-						<th>時間指定</th>
-						<td><%= f.collection_select :time_zone_id, TimeZone.all, :id, :time_zone, :prompt => "選択してください"%></td>
-					</tr>
-					<tr>
-						<th></th>
-						<td><%= f.submit '商品を編集', class:"btn btn-primary" %></td>
-					</tr>
-				</tbody>
-			</table>
-		<% end %>
-		</div>
+	<div class="col col-lg-2"></div>
+	<div class="col col-lg-8">
+	<h2>荷物編集</h2>
+	<p class="admins_error"><%= flash.now[:admins_error] %></p>
+	<%= form_for(@package, url: admins_package_path(@package) ) do |f| %>
+		<table class="table table-borderless">
+			<tbody>
+				<tr>
+					<th class="col-lg-2">伝票番号</th>
+					<td><%= f.text_field :slip_number %></td>
+				</tr>
+				<tr>
+					<th>お届け先</th>
+					<td><%= f.text_field :destination %></td>
+				</tr>
+				<tr>
+					<th>郵便番号</th>
+					<td><%= f.collection_select :postcode_id, Postcode.all, :id, :postcode, :prompt => "選択してください"%></td>
+				</tr>
+				<tr>
+					<th>住所</th>
+					<td><%= f.text_field :address %></td>
+				</tr>
+				<tr>
+					<th>電話番号</th>
+					<td><%= f.text_field :phone_number %></td>
+				</tr>
+				<tr>
+					<th>サイズ</th>
+					<td><%= f.collection_select :size_id, Size.all, :id, :size, :prompt => "選択してください"%></td>
+				</tr>
+				<tr>
+					<th>荷主</th>
+					<td><%= f.collection_select :shipper_id, Shipper.all, :id, :shipper_name, :prompt => "選択してください"%></td>
+				</tr>
+				<tr>
+					<th>品名</th>
+					<td><%= f.collection_select :product_name_id, ProductName.all, :id, :product_name, :prompt => "選択してください"%></td>
+				</tr>
+				<tr>
+					<th>配達日</th>
+					<td><%= f.date_field :delivery_date %></td>
+				</tr>
+				<tr>
+					<th>時間指定</th>
+					<td><%= f.collection_select :time_zone_id, TimeZone.all, :id, :time_zone, :prompt => "選択してください"%></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td><%= f.submit '商品を編集', class:"btn btn-primary" %></td>
+				</tr>
+			</tbody>
+		</table>
+	<% end %>
+	</div>
   </div>
 </div>

@@ -5,9 +5,13 @@
     <div class="col col-lg-8">
     <h2>荷物詳細</h2>
       <table id="table" class="table table-borderless">
+        <colgroup>
+          <col width="20%">
+          <col width="80%">
+        </colgroup>
         <tbody>
           <tr>
-            <th class="col-lg-2">伝票番号</th>
+            <th>伝票番号</th>
             <td><%= @package.slip_number %></td>
           </tr>
           <tr>
@@ -52,9 +56,13 @@
 
       <h3>配達履歴一覧</h3>
       <table class="table table-borderless">
+        <colgroup>
+          <col width="50%">
+          <col width="50%">
+        </colgroup>
         <thead>
           <tr>
-            <th class="col-lg-7">日付</th>
+            <th>日付</th>
             <th>ステータス</th>
           </tr>
         </thead>
@@ -70,9 +78,13 @@
 
       <h3>日時変更依頼一覧</h3>
       <table class="table table-borderless">
+        <colgroup>
+          <col width="50%">
+          <col width="50%">
+        </colgroup>
         <thead>
           <tr>
-            <th class="col-lg-7">日付</th>
+            <th>日付</th>
             <th>時間帯</th>
           </tr>
         </thead>
@@ -88,9 +100,13 @@
 
       <h3>再配達依頼一覧</h3>
       <table class="table table-borderless">
+        <colgroup>
+          <col width="50%">
+          <col width="50%">
+        </colgroup>
         <thead>
           <tr>
-            <th class="col-lg-7">日付</th>
+            <th>日付</th>
             <th>時間帯</th>
           </tr>
         </thead>

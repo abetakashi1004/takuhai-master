@@ -34,7 +34,7 @@ class Publics::RedeliveriesController < ApplicationController
                       render'new'
                     else
                      redelivery.save
-                     redirect_to new_change_date_path, flash:{change_date_success: "再配達を受付しました"}
+                     redirect_to new_redelivery_path, flash:{change_date_success: "再配達を受付しました"}
                     end
 
                   elsif now_delivery_time_zone == "2"
@@ -43,7 +43,7 @@ class Publics::RedeliveriesController < ApplicationController
                       render'new'
                     else
                      redelivery.save
-                     redirect_to new_change_date_path, flash:{change_date_success: "再配達を受付しました"}
+                     redirect_to new_redelivery_path, flash:{change_date_success: "再配達を受付しました"}
                     end
 
                   elsif now_delivery_time_zone == "3"
@@ -52,7 +52,7 @@ class Publics::RedeliveriesController < ApplicationController
                       render'new'
                     else
                      redelivery.save
-                     redirect_to new_change_date_path, flash:{change_date_success: "再配達を受付しました"}
+                     redirect_to new_redelivery_path, flash:{change_date_success: "再配達を受付しました"}
                     end
 
                   elsif now_delivery_time_zone == "4"
@@ -61,7 +61,7 @@ class Publics::RedeliveriesController < ApplicationController
                       render'new'
                     else
                        if redelivery.save
-                        redirect_to new_change_date_path, flash:{change_date_success: "再配達を受付しました"}
+                        redirect_to new_redelivery_path, flash:{change_date_success: "再配達を受付しました"}
                        else
                         flash.now[:change_date_error] = "時間帯を指定してください"
                         render'new'
@@ -74,12 +74,12 @@ class Publics::RedeliveriesController < ApplicationController
                       render'new'
                     else
                      redelivery.save
-                     redirect_to new_change_date_path, flash:{change_date_success: "再配達を受付しました"}
+                     redirect_to new_redelivery_path, flash:{change_date_success: "再配達を受付しました"}
                     end
                   end
               else
                  if redelivery.save
-                  redirect_to new_change_date_path, flash:{change_date_success: "再配達を受付しました"}
+                  redirect_to new_redelivery_path, flash:{change_date_success: "再配達を受付しました"}
                  else
                   flash.now[:change_date_error] = "時間帯を指定してください"
                   render'new'

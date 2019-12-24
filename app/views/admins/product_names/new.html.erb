@@ -1,25 +1,25 @@
 
 <div class="container">
   <div class="row">
-  	    <div class="col col-lg-2"></div>
-		<div class="col col-lg-8">
-		<h2>品名登録</h2>
-		<p class="admins_error"><%= flash.now[:admins_error] %></p>
-		<p class="not_create"><%= flash.now[:not_create] %></p>
-		<%= form_for(@product_name, url: admins_product_names_path) do |f| %>
-			<table class="table table-borderless">
-				<tbody>
-					<tr>
-						<th class="col-lg-2">品名</th>
-						<td><%= f.text_field :product_name %></td>
-					</tr>
-					<tr>
-						<th></th>
-						<td><%= f.submit '品名を登録', class: 'btn btn-primary submit_botton' %></td>
-					</tr>
-				</tbody>
-			</table>
-		<% end %>
-		</div>
+	<div class="col col-lg-2"></div>
+	<div class="col col-lg-8">
+	<h2>品名登録</h2>
+	<p class="admins_error"><%= flash.now[:admins_error] %></p>
+	<p class="not_create"><%= flash.now[:not_create] %></p>
+	<%= form_for(@product_name, url: admins_product_names_path) do |f| %>
+		<table class="table table-borderless">
+			<tbody>
+				<tr>
+					<th class="col-lg-2">品名</th>
+					<td><%= f.text_field :product_name %></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td><%= f.submit '品名を登録', class: 'btn btn-primary submit_botton' %></td>
+				</tr>
+			</tbody>
+		</table>
+	<% end %>
+	</div>
   </div>
 </div>

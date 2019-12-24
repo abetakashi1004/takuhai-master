@@ -1,112 +1,116 @@
 
 <div class="container">
-    <div class="col col-lg-2"></div>
-    <div class="col col-lg-8">
-      <h3>日時変更の荷物</h3>
-      <% change_dates.each do |f| %>
-          <% if f.package.complete == false  %><!-- 荷物が終わったかどうか -->
-
-            <% now_postcode_id = f.package.postcode_id %>
-            <% now_delivery_persons = TodayCourse.where(postcode_id: now_postcode_id) %><!-- 日付変更された荷物のエリア担当ドライバーを特定 -->
-            <% now_delivery_persons.each do |a|  %>
-            <% if a.delivery_person %>
-                <% if a.delivery_person.id == current_delivery_person.id %><!-- 日付変更された荷物のエリア担当ドライバー　＝　ログイン中のドライバー -->
-
-                  <% if f.check == false %>
-                    <div class="packages">
-                      <table class="table table-borderless">
-                        <tbody>
-                          <tr>
-                            <th class="col-lg-2">伝票番号</th>
-                            <td><%= f.package.slip_number %></td>
-                          </tr>
-                          <tr>
-                            <th>お届け先</th>
-                            <td><%= f.package.destination %></td>
-                          </tr>
-                          <tr>
-                            <th>郵便番号</th>
-                            <td><%= f.package.postcode.postcode %></td>
-                          </tr>
-                          <tr>
-                            <th>住所</th>
-                            <td><%= f.package.address %></td>
-                          </tr>
-                          <tr>
-                            <th>荷主名</th>
-                            <td><%= f.package.shipper.shipper_name %></td>
-                          </tr>
-                          <tr>
-                            <th></th>
-                            <td><%= link_to "詳細ページ", drivers_package_path(f.package.id), class:"btn btn-default " %>
-                              <%= link_to "確認してここから消す", drivers_change_date_path(f.id, params: { change_date: { check: true} }), :method => :put , class:"btn btn-default "%>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  <% end %>
-                <% end %>
-            <% else %>
+  <div class="col col-lg-2"></div>
+  <div class="col col-lg-8">
+    <h3>日時変更の荷物</h3>
+    <% change_dates.each do |f| %>
+      <% if f.package.complete == false  %><!-- 荷物が終わったかどうか -->
+        <% now_postcode_id = f.package.postcode_id %>
+        <% now_delivery_persons = TodayCourse.where(postcode_id: now_postcode_id) %><!-- 日付変更された荷物のエリア担当ドライバーを特定 -->
+        <% now_delivery_persons.each do |a|  %>
+          <% if a.delivery_person %>
+            <% if a.delivery_person.id == current_delivery_person.id %><!-- 日付変更された荷物のエリア担当ドライバー　＝　ログイン中のドライバー -->
+              <% if f.check == false %>
+                <div class="packages">
+                  <table class="table table-borderless">
+                    <colgroup>
+                      <col width="20%">
+                      <col width="80%">
+                    </colgroup>
+                    <tbody>
+                      <tr>
+                        <th>伝票番号</th>
+                        <td><%= f.package.slip_number %></td>
+                      </tr>
+                      <tr>
+                        <th>お届け先</th>
+                        <td><%= f.package.destination %></td>
+                      </tr>
+                      <tr>
+                        <th>郵便番号</th>
+                        <td><%= f.package.postcode.postcode %></td>
+                      </tr>
+                      <tr>
+                        <th>住所</th>
+                        <td><%= f.package.address %></td>
+                      </tr>
+                      <tr>
+                        <th>荷主名</th>
+                        <td><%= f.package.shipper.shipper_name %></td>
+                      </tr>
+                      <tr>
+                        <th></th>
+                        <td><%= link_to "詳細ページ", drivers_package_path(f.package.id), class:"btn btn-default " %>
+                          <%= link_to "確認してここから消す", drivers_change_date_path(f.id, params: { change_date: { check: true} }), :method => :put , class:"btn btn-default "%>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              <% end %>
             <% end %>
-            <% end %>
+          <% else %>
           <% end %>
+        <% end %>
       <% end %>
-    </div>
+    <% end %>
+  </div>
 </div>
 
 <div class="container">
-    <div class="col col-lg-2"></div>
-    <div class="col col-lg-8">
-      <h3>再配達の荷物</h3>
-      <% redeliveries.each do |f| %>
-          <% if f.package.complete == false  %><!-- 荷物が終わったかどうか -->
-
-            <% now_postcode_id = f.package.postcode_id %>
-            <% now_delivery_persons = TodayCourse.where(postcode_id: now_postcode_id) %>
-            <% now_delivery_persons.each do |a|  %>
-            <% if a.delivery_person %>
-                <% if a.delivery_person.id == current_delivery_person.id %><!-- 再配達指定された荷物のエリア担当ドライバー　＝　ログイン中のドライバー -->
-
-                  <% if f.check == false %>
-                    <div class="packages">
-                      <table class="table table-borderless">
-                        <tbody>
-                          <tr>
-                            <th class="col-lg-2">伝票番号</th>
-                            <td><%= f.package.slip_number %></td>
-                          </tr>
-                          <tr>
-                            <th>お届け先</th>
-                            <td><%= f.package.destination %></td>
-                          </tr>
-                          <tr>
-                            <th>郵便番号</th>
-                            <td><%= f.package.postcode.postcode %></td>
-                          </tr>
-                          <tr>
-                            <th>住所</th>
-                            <td><%= f.package.address %></td>
-                          </tr>
-                          <tr>
-                            <th>荷主名</th>
-                            <td><%= f.package.shipper.shipper_name %></td>
-                          </tr>
-                          <tr>
-                            <th></th>
-                            <td><%= link_to "詳細ページ", drivers_package_path(f.package.id), class:"btn btn-default " %>
-                              <%= link_to "確認してここから消す", drivers_redelivery_path(f.id, params: { redelivery: { check: true} }), :method => :put , class:"btn btn-default "%>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  <% end %>
-                <% end %>
-            <% else %>
+  <div class="col col-lg-2"></div>
+  <div class="col col-lg-8">
+    <h3>再配達の荷物</h3>
+    <% redeliveries.each do |f| %>
+      <% if f.package.complete == false  %><!-- 荷物が終わったかどうか -->
+        <% now_postcode_id = f.package.postcode_id %>
+        <% now_delivery_persons = TodayCourse.where(postcode_id: now_postcode_id) %>
+        <% now_delivery_persons.each do |a|  %>
+          <% if a.delivery_person %>
+            <% if a.delivery_person.id == current_delivery_person.id %><!-- 再配達指定された荷物のエリア担当ドライバー　＝　ログイン中のドライバー -->
+              <% if f.check == false %>
+                <div class="packages">
+                  <table class="table table-borderless">
+                    <colgroup>
+                      <col width="20%">
+                      <col width="80%">
+                    </colgroup>
+                    <tbody>
+                      <tr>
+                        <th>伝票番号</th>
+                        <td><%= f.package.slip_number %></td>
+                      </tr>
+                      <tr>
+                        <th>お届け先</th>
+                        <td><%= f.package.destination %></td>
+                      </tr>
+                      <tr>
+                        <th>郵便番号</th>
+                        <td><%= f.package.postcode.postcode %></td>
+                      </tr>
+                      <tr>
+                        <th>住所</th>
+                        <td><%= f.package.address %></td>
+                      </tr>
+                      <tr>
+                        <th>荷主名</th>
+                        <td><%= f.package.shipper.shipper_name %></td>
+                      </tr>
+                      <tr>
+                        <th></th>
+                        <td><%= link_to "詳細ページ", drivers_package_path(f.package.id), class:"btn btn-default " %>
+                          <%= link_to "確認してここから消す", drivers_redelivery_path(f.id, params: { redelivery: { check: true} }), :method => :put , class:"btn btn-default ", "data-confirm" => "確認して消しますか？"%>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              <% end %>
             <% end %>
-            <% end %>
+          <% else %>
           <% end %>
+        <% end %>
       <% end %>
-    </div>
+    <% end %>
+  </div>
 </div>

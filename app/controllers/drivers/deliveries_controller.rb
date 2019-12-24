@@ -17,17 +17,17 @@ class Drivers::DeliveriesController < Drivers::ApplicationController
 
   	delivery = Delivery.new(delivery_params)
   	current_slip_number = params[:delivery][:package_id]#荷物IDのフォームに伝票番号を入力させている為
-	  	if Package.where(slip_number: current_slip_number).exists?#その伝票番号が存在するかどうか
+	  	if Package.where(slip_number: current_slip_number).exists?#入力された伝票番号が存在するかどうか
 		  	just_package = Package.find_by(slip_number: current_slip_number)#入力された伝票番号の荷物を特定
-		  	if Takeout.where(package_id: just_package.id, delivery_person_id:current_delivery_person.id ).exists?#持ち出し登録しているかどうか
-		  		if just_package.complete == false #配達未完了の荷物かどうか
+		  	if Takeout.where(package_id: just_package.id, delivery_person_id:current_delivery_person.id ).exists?#持ち出し登録していなかったら配達報告できないようにする
+		  		if just_package.complete == false #配達完了している伝票番号ならrender
 				  	delivery.package_id = just_package.id
 				  	delivery.save
 				  	takeout = Takeout.find_by(package_id: just_package.id, delivery_person_id: current_delivery_person.id )
-				  	if    params[:delivery][:status] == '配達完了' #配達完了なら、持ち出しテーブルのステータスを配達完了変更・荷物の完了カラムをtrueに
+				  	if    params[:delivery][:status] == '配達完了' #配達報告が配達完了なら、持ち出しテーブルのステータスを配達完了変更・荷物の完了カラムをtrueに
 				  	      takeout.update(status:2)
 				  	      just_package.update(complete: true)
-				  	elsif params[:delivery][:status] == '不在'#不在なら、持ち出しテーブルのステータスを不在に変更・荷物の不在カラムをtrueに
+				  	elsif params[:delivery][:status] == '不在'#配達報告が不在なら、持ち出しテーブルのステータスを不在に変更・荷物の不在カラムをtrueに
 				  	      takeout.update(status:3)
 				  	      just_package.update(absence: true)#使わなくなったので消しても良い
 				  	end

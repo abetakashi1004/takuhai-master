@@ -7,6 +7,10 @@
 			<p class="comment_error"><%= flash.now[:comment_error] %></p>
 		　　<h3 class="user_info">ユーザー情報</h3>
 	        <table id="table" class="table">
+	            <colgroup>
+		            <col width="20%">
+		            <col width="80%">
+	            </colgroup>
 		        <tbody>
 		          <tr>
 		            <th>名前</th>
@@ -46,6 +50,10 @@
 				<% @deliveries.each do |f| %>
 					<div class="packages">
 				        <table id="table" class="table">
+				            <colgroup>
+					            <col width="40%">
+					            <col width="60%">
+				            </colgroup>
 					        <tbody>
 					          <tr>
 					            <th>伝票番号</th>
