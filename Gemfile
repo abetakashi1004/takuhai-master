@@ -73,6 +73,10 @@ gem 'paranoia'
 gem 'pry-byebug'
 gem 'whenever', require: false
 
+group :production do
+  gem 'mysql2'
+end
+
 
 
 
