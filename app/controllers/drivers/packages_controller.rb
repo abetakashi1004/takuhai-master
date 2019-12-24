@@ -1,4 +1,5 @@
-class Drivers::PackagesController < ApplicationController
+class Drivers::PackagesController < Drivers::ApplicationController
+
   def show
     @package = Package.find(params[:id])
     @change_dates = ChangeDate.where(package_id: @package.id)

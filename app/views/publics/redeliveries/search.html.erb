@@ -3,12 +3,17 @@
 		<div class="col">
 			<div class="col col-lg-2"></div>
 			<div class="col col-lg-8">
+				<h3>検索結果</h3>
 				<% if Package.where(slip_number: params[:search]).exists?  %>
 					<div class="packages">
 					    <table class="table table-borderless">
+					          <colgroup>
+					            <col width="20%">
+					            <col width="80%">
+					          </colgroup>
 					      <tbody>
 					        <tr>
-					          <th class="col-lg-2">伝票番号</th>
+					          <th>伝票番号</th>
 					          <td><%= @package.slip_number %></td>
 					        </tr>
 					        <tr>
@@ -42,17 +47,17 @@
 					      <div class="modal-body">
 					      	<div class="form">
 						      	<%= form_for(@redelivery) do |f| %>
-						      	<h4>日付を選択してください</h3>
+						      	<h4 class="select-title">日付を選択してください</h3>
 						      	<%= f.date_field :delivery_date %><br>
 						      	<%= f.hidden_field :package_id, value: @package.id %>
-						      	<h4>時間帯を選択してください</h3>
+						      	<h4 class="select-title">時間帯を選択してください</h3>
 						      	<% @time_zones.each do |t| %>
 						      		<label class="btn-warning decision_time_zone ">
 						      			<%= f.radio_button :time_zone_id, t.id %>
 						      			<%= t.time_zone %>
 					      			</label><br>
 						      	<% end %>
-								<%= f.submit "再配達を依頼する" , class:"btn btn-primary" %>
+								<%= f.submit "再配達を依頼する" , class:"btn btn-primary redelivery-button " %>
 						      	<% end %>
 					      	</div>
 					      </div>

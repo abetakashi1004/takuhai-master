@@ -1,13 +1,18 @@
-class Admins::ShippersController < ApplicationController
+class Admins::ShippersController < Admins::ApplicationController
 
   def new
   	@shipper = Shipper.new
   end
 
   def create
+    @shipper = Shipper.new
   	shipper = Shipper.new(shipper_params)
-  	shipper.save
-  	redirect_to admins_homes_path
+  	if shipper.save
+      redirect_to admins_homes_path
+    else
+      flash.now[:admins_error] = "登録できませんでした"
+      render'new'
+    end
   end
 
 private

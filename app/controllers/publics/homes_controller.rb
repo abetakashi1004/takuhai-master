@@ -1,4 +1,5 @@
 class Publics::HomesController < ApplicationController
+
   def index
   end
 

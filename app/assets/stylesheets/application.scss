@@ -79,6 +79,16 @@ body,
 	box-shadow: 0px 0px 0px 5px #d3d3d3;
 	font-family:serif;
 }
+
+#title_logo{
+	text-decoration: none;
+}
+
+.sign_title{
+	margin:15px;
+}
+
+
 .log_in_name{
 	float:right;
 	width:380px;
@@ -87,7 +97,7 @@ body,
 	margin-top:50px;
 }
 
-#sales_office_email, #enduser_email, #enduser_address, input[type="password"], .address-place{
+#sales_office_email, #enduser_email, #enduser_address, input[type="password"], .address-place, #enduser_name, #sales_office_sales_office_name, #delivery_person_name{
 	width:300px;
 }
 
@@ -103,4 +113,12 @@ body,
 
 #table th {
 	vertical-align:middle;
+}
+
+.main-title{
+	display: inline-block;
+	padding: 10px;
+	background-color:white;
+	border: 1px solid black;
+	margin: 20px 0;
 }

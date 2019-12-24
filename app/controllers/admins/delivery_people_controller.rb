@@ -1,11 +1,12 @@
-class Admins::DeliveryPeopleController < ApplicationController
+class Admins::DeliveryPeopleController < Admins::ApplicationController
+
   def index
     @delivery_people = DeliveryPerson.where(sales_office_id: current_sales_office.id)
   end
 
   def show
     @delivery_person = DeliveryPerson.find(params[:id])
-    @comments = Comment.where(delivery_person_id: @delivery_person.id)
+    @comments = Comment.where(delivery_person_id: @delivery_person.id).page(params[:page]).per(30).reverse_order
   end
 
   def edit
@@ -13,12 +14,20 @@ class Admins::DeliveryPeopleController < ApplicationController
   end
 
   def update
+    @delivery_person = DeliveryPerson.find(params[:id])
     delivery_person = DeliveryPerson.find(params[:id])
-    delivery_person.update(delivery_person_params)
-    redirect_to admins_delivery_person_path(delivery_person.id)
+    if delivery_person.update(delivery_person_params)
+      redirect_to admins_delivery_person_path(delivery_person.id), flash: {admins_success: "ドライバー情報を編集しました"}
+    else
+      flash.now[:admins_error] = "編集できませんでした"
+      render'edit'
+    end
   end
 
   def destroy
+    delivery_person = DeliveryPerson.find(params[:id])
+    delivery_person.destroy
+    redirect_to admins_delivery_people_path
   end
 
 private

@@ -5,6 +5,7 @@
     <div class="col col-lg-2"></div>
     <div class="col col-lg-8">
       <h2>登録荷物一覧</h2>
+      <p class="admins_success"><%= flash.now[:admins_success] %></p>
       <span class="search">
           <%= form_tag admins_packages_path ,:method => 'get' do %>
           <%= text_field_tag :search, params[:search] ,placeholder:"お届け先で検索" %>
@@ -15,10 +16,13 @@
       <% @packages.each do |f| %>
       <div class="packages">
         <table id="table" class="table table-borderless">
-
+          <colgroup>
+            <col width="20%">
+            <col width="80%">
+          </colgroup>
           <tbody>
             <tr>
-              <th class="col-lg-2">伝票番号</th>
+              <th>伝票番号</th>
               <td><%= f.slip_number %></td>
             </tr>
             <tr>
@@ -41,7 +45,7 @@
               <th></th>
               <td><%= link_to "詳細ページ", admins_package_path(f.id), class:"btn btn-default " %>
                   <%= link_to "荷物の編集", edit_admins_package_path(f.id), class:"btn btn-default " %>
-                  <%= link_to "荷物の削除", admins_package_path(f.id), method: :delete ,class:"btn btn-default " %>
+                  <%= link_to "荷物の削除", admins_package_path(f.id), method: :delete ,class:"btn btn-default ", "data-confirm" => "本当に削除しますか？" %>
               </td>
             </tr>
           </tbody>

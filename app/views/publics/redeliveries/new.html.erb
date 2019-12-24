@@ -1,13 +1,15 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">      <p class="success-message"><%= flash.now[:message] %></p>
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <p class="change_date_success"><%= flash.now[:change_date_success] %></p>
+      <p class="change_date_error"><%= flash.now[:change_date_error] %></p>
       <h2>再配達依頼フォーム</h2>
       <%= form_tag(redeliveries_search_path, :method => 'get') do %>
       <label  class="serach-place">伝票番号を入力してください</label><br>
-      <%= text_field_tag :search ,params[:search],placeholder:" 半角で入力"%>
-      <%= submit_tag " 検索　", class: 'btn-primary' %>
+    <%= text_field_tag :search ,params[:search],placeholder:" 半角数字で入力", class: 'search-form' %>
+      <%= submit_tag " 検索　", class: 'btn-primary search-button ' %>
       <% end %>
     </div>
   </div>

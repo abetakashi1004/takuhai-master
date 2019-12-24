@@ -3,8 +3,14 @@
 	<div class="row">
 		<div class="col-lg-2"></div>
 		<div class="col-lg-8">
-		　　<h3>ユーザー情報</h3>
+			<p class="comment_success"><%= flash.now[:comment_success] %></p>
+			<p class="comment_error"><%= flash.now[:comment_error] %></p>
+		　　<h3 class="user_info">ユーザー情報</h3>
 	        <table id="table" class="table">
+	            <colgroup>
+		            <col width="20%">
+		            <col width="80%">
+	            </colgroup>
 		        <tbody>
 		          <tr>
 		            <th>名前</th>
@@ -42,47 +48,60 @@
 			<div class="col-lg-8">
 				<h3>配達履歴</h3>
 				<% @deliveries.each do |f| %>
-				<div class="packages">
-			        <table id="table" class="table">
-				        <tbody>
-				          <tr>
-				            <th>伝票番号</th>
-				            <td><%= f.package.slip_number %></td>
-				          </tr>
-				          <tr>
-				            <th>荷主</th>
-				            <td><%= f.package.shipper.shipper_name %></td>
-				          </tr>
-				          <tr>
-				          <tr>
-				            <th>不在 or 配達完了</th>
-				            <td><%= f.status %></td>
-				          </tr>
-				          <tr>
-				            <th>日付・時間</th>
-				            <td><%= f.created_at.strftime('%Y-%m-%d %H:%M') %></td>
-				          </tr>
-				          <tr>
-				            <th id="mypage-driver" class="mypage">配達担当ドライバー</th>
-				            <td><%= f.delivery_person.name %>
-				            	<%= attachment_image_tag f.delivery_person, :face_photo, :fill, 80, 80, format: 'jpeg' %>
-				            </td>
-				          </tr>
-				            <th>いいね・コメント</th>
-				            <td><span class="<%= f.id %>"><%= render 'publics/endusers/favorite' , f: f  %></span>
-				            	<button type="button" class="btn btn-info comment-button " data-toggle="modal" data-target="#comment_modal_<%= f.id %>" >配達員にコメントする</button>
-				            	</td>
-				          </tr>
-				          <% if f.status == "不在" && f.package.complete != true   %>
-				          <tr>
-				            <th>再配達依頼ボタン</th>
-				            <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#package_modal_<%= f.id %>" >再配達を依頼する</button></td>
-				          </tr>
-				          <% end %>
-				          <tr>
-				        </tbody>
-			        </table>
-				</div>
+					<div class="packages">
+				        <table id="table" class="table">
+				            <colgroup>
+					            <col width="40%">
+					            <col width="60%">
+				            </colgroup>
+					        <tbody>
+					          <tr>
+					            <th>伝票番号</th>
+					            <td><%= f.package.slip_number %></td>
+					          </tr>
+					          <tr>
+					            <th>荷主</th>
+					            <td><%= f.package.shipper.shipper_name %></td>
+					          </tr>
+					          <tr>
+					          <tr>
+					            <th>不在 or 配達完了</th>
+					            <td><%= f.status %></td>
+					          </tr>
+					          <tr>
+					            <th>日付・時間</th>
+					            <td><%= f.created_at.strftime('%Y-%m-%d %H:%M') %></td>
+					          </tr>
+					          <% if f.delivery_person %>
+						          <tr>
+						            <th id="mypage-driver" class="mypage">配達担当ドライバー</th>
+						            <td>
+						            	<%= f.delivery_person.name %>
+						            	<%= attachment_image_tag f.delivery_person, :face_photo, :fill, 80, 80, format: 'jpeg' %>
+						            </td>
+						          </tr>
+						          <tr>
+						            <th>いいね・コメント</th>
+						            <td><span class="<%= f.id %>"><%= render 'publics/endusers/favorite' , f: f  %></span>
+						            	<button type="button" class="btn btn-info comment-button " data-toggle="modal" data-target="#comment_modal_<%= f.id %>" >配達員にコメントする</button>
+						            	</td>
+					              </tr>
+				              <% else %>
+					            	<tr>
+					            		<th>配達担当ドライバー</th>
+					            		<td>（離職したドライバー）</td>
+					            	</tr>
+				              <% end %>
+					          <% if f.status == "不在" && f.package.complete != true   %>
+					          <tr>
+					            <th>再配達依頼ボタン</th>
+					            <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#package_modal_<%= f.id %>" >再配達を依頼する</button></td>
+					          </tr>
+					          <% end %>
+					          <tr>
+					        </tbody>
+				        </table>
+					</div>
 
 				<div class="modal fade" id="package_modal_<%= f.id %>" tabindex="-1" role="dialog" aria-labelledby="Modal" aria-hidden="true">
 				  <div class="modal-dialog modal-lg" role="document">
@@ -115,44 +134,47 @@
 				  </div>
 				</div>
 
-				<div class="modal fade" id="comment_modal_<%= f.id %>" tabindex="-1" role="dialog" aria-labelledby="Modal" aria-hidden="true">
-				  <div class="modal-dialog" role="document">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <h3 class="modal-title" id="Modal">コメントフォーム</h3>
-				        </button>
-				      </div>
-				      <div class="modal-body">
-				      	<div class="form">
-					      	<%= form_for(@comment) do |b| %>
-					      	<%= b.text_field :comment %>
-					      	<%= b.hidden_field :enduser_id , value: current_enduser.id %>
-					      	<%= b.hidden_field :delivery_id, value: f.id %>
-					      	<%= b.hidden_field :delivery_person_id, value: f.delivery_person.id %>
-					      	<%= b.submit "コメントする" , class:"btn btn-primary" %>
-					      	<% end %>
-				      	</div>
-				      </div>
-				      <div class="modal-footer">
-				        <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
-				      </div>
-				    </div>
-				  </div>
-				</div>
+					<% if f.delivery_person %>
+						<div class="modal fade" id="comment_modal_<%= f.id %>" tabindex="-1" role="dialog" aria-labelledby="Modal" aria-hidden="true">
+						  <div class="modal-dialog" role="document">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h3 class="modal-title" id="Modal">コメントフォーム（最大１５０文字）</h3>
+						        </button>
+						      </div>
+						      <div class="modal-body">
+						      	<div class="form">
+							      	<%= form_for(@comment) do |b| %>
+							      	<%= b.text_field :comment %>
+							      	<%= b.hidden_field :enduser_id , value: current_enduser.id %>
+							      	<%= b.hidden_field :delivery_id, value: f.id %>
+							      	<%= b.hidden_field :delivery_person_id, value: f.delivery_person.id %>
+							      	<%= b.submit "コメントする" , class:"btn btn-primary" %>
+							      	<% end %>
+						      	</div>
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+					<% end %>
 
 				<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 				<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 			    <% end %> <!-- eachの終わり -->
+				<%= paginate @deliveries, class: "paginate" %>
 			</div>
 		</div>
 	<% else %>
-	<div class="row">
-			<div class="col-lg-2"></div>
-			<div class="col-lg-8">
-				<h4>ここに配達履歴が表示されます</h4>
-			</div>
-	</div>
+		<div class="row">
+				<div class="col-lg-2"></div>
+				<div class="col-lg-8">
+					<h4>ここに配達履歴が表示されます</h4>
+				</div>
+		</div>
 	<% end %>
 </div>
 
