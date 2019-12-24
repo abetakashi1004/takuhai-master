@@ -4,7 +4,7 @@ class CreateShippers < ActiveRecord::Migration[5.2]
       t.string :shipper_name
       t.integer :postcode
       t.string :address
-      t.integer :phone_number
+      t.string :phone_number
 
       t.timestamps
     end

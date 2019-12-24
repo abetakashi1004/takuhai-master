@@ -31,13 +31,12 @@ class DeviseCreateDeliveryPeople < ActiveRecord::Migration[5.2]
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
-
+      t.string :email
       t.integer :sales_office_id
       t.string :name
       t.string :face_photo_id
-      t.integer :caree
-      t.string :email
-      t.string :password
+      t.integer :career
+      t.datetime :deleted_at
       t.timestamps null: false
     end
 

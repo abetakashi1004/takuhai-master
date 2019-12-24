@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_22_103231) do
+ActiveRecord::Schema.define(version: 2019_12_04_090128) do
 
   create_table "change_dates", force: :cascade do |t|
     t.integer "package_id"
@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 2019_12_22_103231) do
   create_table "comments", force: :cascade do |t|
     t.integer "enduser_id"
     t.integer "delivery_id"
+    t.integer "delivery_person_id"
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "delivery_person_id"
   end
 
   create_table "deliveries", force: :cascade do |t|
@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(version: 2019_12_22_103231) do
     t.integer "sales_office_id"
     t.string "name"
     t.string "face_photo_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "career"
     t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_delivery_people_on_email", unique: true
     t.index ["reset_password_token"], name: "index_delivery_people_on_reset_password_token", unique: true
   end
@@ -61,12 +61,12 @@ ActiveRecord::Schema.define(version: 2019_12_22_103231) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "phone_number"
     t.string "name"
     t.integer "postcode"
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "phone_number"
     t.index ["email"], name: "index_endusers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_endusers_on_reset_password_token", unique: true
   end
@@ -74,9 +74,9 @@ ActiveRecord::Schema.define(version: 2019_12_22_103231) do
   create_table "favorites", force: :cascade do |t|
     t.integer "enduser_id"
     t.integer "delivery_id"
+    t.integer "delivery_person_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "delivery_person_id"
   end
 
   create_table "packages", force: :cascade do |t|
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 2019_12_22_103231) do
     t.integer "product_name_id"
     t.integer "postcode_id"
     t.integer "time_zone_id"
+    t.string "phone_number"
     t.integer "size_id"
     t.integer "slip_number"
     t.string "destination"
@@ -93,15 +94,14 @@ ActiveRecord::Schema.define(version: 2019_12_22_103231) do
     t.boolean "complete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "phone_number"
   end
 
   create_table "postcodes", force: :cascade do |t|
     t.integer "postcode"
+    t.string "course_name"
+    t.integer "sales_office_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "sales_office_id"
-    t.string "course_name"
   end
 
   create_table "product_names", force: :cascade do |t|
@@ -136,9 +136,9 @@ ActiveRecord::Schema.define(version: 2019_12_22_103231) do
     t.string "shipper_name"
     t.integer "postcode"
     t.string "address"
+    t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "phone_number"
   end
 
   create_table "sizes", force: :cascade do |t|
@@ -163,9 +163,9 @@ ActiveRecord::Schema.define(version: 2019_12_22_103231) do
 
   create_table "today_courses", force: :cascade do |t|
     t.integer "delivery_person_id"
+    t.integer "postcode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "postcode_id"
   end
 
 end

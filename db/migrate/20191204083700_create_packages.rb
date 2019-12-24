@@ -5,7 +5,7 @@ class CreatePackages < ActiveRecord::Migration[5.2]
       t.integer :product_name_id
       t.integer :postcode_id
       t.integer :time_zone_id
-      t.integer :phone_number_id
+      t.string :phone_number
       t.integer :size_id
       t.integer :slip_number
       t.string :destination

@@ -32,13 +32,11 @@ class DeviseCreateEndusers < ActiveRecord::Migration[5.2]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-      t.integer :phone_number_id
+      t.string :phone_number
       t.string :name
       t.integer :postcode
       t.string :address
       t.string :email
-      t.integer :level
-      t.integer :point
       t.timestamps null: false
     end
 
