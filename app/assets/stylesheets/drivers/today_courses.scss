@@ -8,7 +8,7 @@
 }
 
 .decision-course{
-    width:120px;
+    width:200px;
 	height:45px;
 	text-align: center;
 	border-radius: 5px;
@@ -18,15 +18,16 @@
 	margin: 14px 10px 0 0 ;
 }
 
-.col-md-6{
-	margin: 0 auto;
-	text-align: center;
-}
-
 .course-button{
 	width:250px;
 	height: 45px;
 	margin-top: 20px;
 	font-size: 18px;
 	border-radius: 5px;
+}
+
+.not_course{
+	margin: 0px 0 15px 0;
+	font-size: 25px;
+	color: red;
 }

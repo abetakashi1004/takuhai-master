@@ -4,6 +4,7 @@
     <div class="col col-lg-2"></div>
     <div class="col col-lg-8">
       <h2>配達完了した荷物</h2>
+      <p class="delete_complete"><%= flash.now[:delete_complete] %></p>
       <span class="search">
           <%= form_tag drivers_takeouts_complete_path ,:method => 'get' do %>
           <%= text_field_tag :search, params[:search] ,placeholder:"お届け先で検索"  %>
@@ -12,9 +13,44 @@
       </span>
 
       <% @completes.each do |f| %>
-      <% if f.package.complete == true  %><!-- 荷物が終わったかどうか -->
-      <%= render 'drivers/takeouts/takeout_templete', f: f %>
-      <% end %>
+        <% if f.package.complete == true  %><!-- 荷物が終わったかどうか -->
+          <div class="packages">
+            <table class="table table-borderless">
+              <colgroup>
+                <col width="20%">
+                <col width="80%">
+              </colgroup>
+              <tbody>
+                <tr>
+                  <th class="col-lg-2">伝票番号</th>
+                  <td><%= f.package.slip_number %></td>
+                </tr>
+                <tr>
+                  <th>お届け先</th>
+                  <td><%= f.package.destination %></td>
+                </tr>
+                <tr>
+                  <th>郵便番号</th>
+                  <td><%= f.package.postcode.postcode %></td>
+                </tr>
+                <tr>
+                  <th>住所</th>
+                  <td><%= f.package.address %></td>
+                </tr>
+                <tr>
+                  <th>荷主名</th>
+                  <td><%= f.package.shipper.shipper_name %></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><%= link_to "詳細ページ", drivers_package_path(f.package.id), class:"btn btn-default " %>
+                      <%= link_to "配達完了を解除", drivers_delivery_path(f.package.id), method: :delete ,class:"btn btn-danger " %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>

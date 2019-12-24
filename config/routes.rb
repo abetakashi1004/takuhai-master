@@ -30,7 +30,6 @@ Rails.application.routes.draw do
     get 'homes/plus'
     get 'redeliveries/search'
     get 'change_dates/search'
-    
   end
 
   namespace :drivers do
@@ -41,6 +40,7 @@ Rails.application.routes.draw do
     resources :deliveries, only:[:new, :create, :destroy]
     resources :today_courses,only:[:new, :create]
     resources :redeliveries,only:[:update]
+    resources :change_dates,only:[:update]
   end
 
   namespace :admins do
@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     resources :packages,only:[:new, :create, :index, :show, :edit, :update, :destroy]
     resources :homes, only:[:index]
     resources :phone_numbers, only:[:create]
+    resources :comments, only:[:destroy]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

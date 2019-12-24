@@ -7,13 +7,13 @@
 }
 .master-title{
 	text-align:center;
-font-family:"ヒラギノ明朝 ProN W6",
-			"HiraMinProN-W6",
-			"HG明朝E",
-			"ＭＳ Ｐ明朝",
-			"MS PMincho",
-			"MS 明朝",
-			serif;
+    font-family:"ヒラギノ明朝 ProN W6",
+				"HiraMinProN-W6",
+				"HG明朝E",
+				"ＭＳ Ｐ明朝",
+				"MS PMincho",
+				"MS 明朝",
+				serif;
 }
 .explain{
 	margin-top: 45px;
@@ -22,4 +22,25 @@ font-family:"ヒラギノ明朝 ProN W6",
 .explain-details{
 	font-size: 20px;
 	margin-top: 15px;
+}
+
+.about{
+	display: inline-block;
+}
+
+.fa-paw{
+	font-size: 35px;
+	margin-left: 20px;
+}
+.fa-cat{
+	margin: 0 30px;
+}
+
+.plus{
+	display: inline-block;
+}
+
+.fa-hand-holding-heart{
+	font-size: 45px;
+	margin: 0 40px;
 }

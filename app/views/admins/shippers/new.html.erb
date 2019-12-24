@@ -1,35 +1,36 @@
 
 <div class="container">
   <div class="row">
-  	    <div class="col col-lg-2"></div>
-		<div class="col col-lg-8">
-		<h2>荷主登録</h2>
-		<%= form_for(@shipper, url: admins_shippers_path) do |f| %>
-			<table class="table table-borderless">
-				<tbody>
-					<tr>
-						<th class="col-lg-2">荷主名</th>
-						<td><%= f.text_field :shipper_name %></td>
-					</tr>
-					<tr>
-						<th>郵便番号</th>
-						<td><%= f.text_field :postcode , placeholder: "（例）5430987" %></td>
-					</tr>
-					<tr>
-						<th>住所</th>
-						<td><%= f.text_field :address %></td>
-					</tr>
-					<tr>
-						<th>電話番号</th>
-						<td><%= f.text_field :phone_number, placeholder: "（例）09012345678" %></td>
-					</tr>
-										<tr>
-						<th></th>
-						<td><%= f.submit '荷主を登録', class: 'btn btn-primary submit_botton' %></td>
-					</tr>
-				</tbody>
-			</table>
-		<% end %>
-		</div>
+	<div class="col col-lg-2"></div>
+	<div class="col col-lg-8">
+	<h2>荷主登録</h2>
+	<p class="admins_error"><%= flash.now[:admins_error] %></p>
+	<%= form_for(@shipper, url: admins_shippers_path) do |f| %>
+		<table class="table table-borderless">
+			<tbody>
+				<tr>
+					<th class="col-lg-2">荷主名</th>
+					<td><%= f.text_field :shipper_name %></td>
+				</tr>
+				<tr>
+					<th>郵便番号</th>
+					<td><%= f.text_field :postcode , placeholder: "（例）5430987" %></td>
+				</tr>
+				<tr>
+					<th>住所</th>
+					<td><%= f.text_field :address %></td>
+				</tr>
+				<tr>
+					<th>電話番号</th>
+					<td><%= f.text_field :phone_number, placeholder: "（例）09012345678" %></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td><%= f.submit '荷主を登録', class: 'btn btn-primary submit_botton' %></td>
+				</tr>
+			</tbody>
+		</table>
+	<% end %>
+	</div>
   </div>
 </div>

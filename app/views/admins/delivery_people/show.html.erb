@@ -4,7 +4,8 @@
     <div class="col col-lg-2"></div>
     <div class="col col-lg-8">
       <h2>ドライバー詳細</h2>
-        <table class="table table-striped">
+      <p class="admins_success"><%= flash.now[:admins_success] %></p>
+       <table class="table table-striped">
           <thead>
             <tr>
               <th class="col-lg-5"></th>
@@ -16,19 +17,25 @@
                 <td><%= attachment_image_tag @delivery_person, :face_photo, :fill, 200, 200, format: 'jpeg' %></td>
                 <td><p class="driver_name">名前　<%= @delivery_person.name %></p>
                     <p class="driver_career">経歴　<%= @delivery_person.career %>年目</p>
-                    <p class="deliver_favorite"><i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                    <p class="deliver_favorite"><i class="far fa-thumbs-up"></i>
                        いいね　<%= @delivery_person.favorites.count %> 件</p>
                     <p class="deliver_comment"><i class="far fa-comment-dots"></i> コメント <%= @delivery_person.comments.count %> 件</p>
                 </td>
             </tr>
           </tbody>
-       </table>
-       <h2>コメント一覧</h2>
+        </table>
+       <h2 class="comment-title">コメント一覧</h2>
         <table class="table">
+          <colgroup>
+            <col width="30%">
+            <col width="50%">
+            <col width="20%">
+          </colgroup>
           <thead>
             <tr>
-              <th class="col-lg-5">ユーザー名</th>
+              <th>ユーザー名</th>
               <th>コメント内容</th>
+              <th></th>
             </tr>
           </thead>
           <% @comments.each do |f| %>
@@ -36,10 +43,13 @@
             <tr>
               <td><%= f.enduser.name %></td>
               <td><%= f.comment %></td>
+              <td><%= link_to "コメントを削除",admins_comment_path(f.id), method: :delete, class:'btn btn-default' %></td>
             </tr>
           </tbody>
           <% end %>
         </table>
+        <%= paginate @comments, class: "paginate" %>
     </div>
   </div>
 </div>
+

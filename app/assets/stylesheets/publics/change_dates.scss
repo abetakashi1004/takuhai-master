@@ -2,7 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.success-message{
-	color:red;
+.search-button{
+	border-radius: 5px;
+	height: 30px;
+}
+
+.search-form{
+	width:180px;
+	height: 30px;
+}
+
+.select-title{
+	margin-top:25px;
+	margin-bottom: 20px;
+}
+
+.change-date-button{
+	margin-top: 15px;
+}
+
+.change_date_success{
 	font-size: 25px;
+	color: green;
+}
+
+.change_date_error{
+	font-size: 25px;
+	color: red;
 }
