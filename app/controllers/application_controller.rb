@@ -12,6 +12,16 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+  	def after_sign_out_path_for(resource)
+		if resource.is_a?(SalesOffice)
+		  new_sales_office_session_path
+		elsif resource.is_a?(DeliveryPerson)
+	      new_delivery_person_session_path
+	    else
+	      homes_path
+		end
+	end
+
 
   protected
   def configure_permitted_parameters

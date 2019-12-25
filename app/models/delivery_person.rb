@@ -18,7 +18,7 @@ class DeliveryPerson < ApplicationRecord
   validates :sales_office_id, presence:true
   validates :name, presence:true
   validates :name, length: { maximum: 20 }
-  validates :face_photo_id, presence:true
+  validates :face_photo, presence:true
   validates :career, presence:true
 
   def favorite_count(delivery_person_id)
