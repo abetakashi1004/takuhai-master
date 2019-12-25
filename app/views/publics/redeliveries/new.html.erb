@@ -7,8 +7,8 @@
       <p class="change_date_error"><%= flash.now[:change_date_error] %></p>
       <h2>再配達依頼フォーム</h2>
       <%= form_tag(redeliveries_search_path, :method => 'get') do %>
-      <label  class="serach-place">伝票番号を入力してください</label><br>
-    <%= text_field_tag :search ,params[:search],placeholder:" 半角数字で入力", class: 'search-form' %>
+      <label  class="serach-place"><span class="red">伝票番号</span>を入力してください</label><br>
+    <%= text_field_tag :search ,params[:search],placeholder:"（例）111122223333", class: 'search-form' %>
       <%= submit_tag " 検索　", class: 'btn-primary search-button ' %>
       <% end %>
     </div>
