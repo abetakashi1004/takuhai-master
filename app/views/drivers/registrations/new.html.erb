@@ -3,42 +3,42 @@
   <div class="row">
     <div class="col col-lg-2"></div>
     <div class="col col-lg-8">
-    <h2 class="sign_title">ドライバー登録</h2>
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
-      <table class="table table-borderless">
-        <tbody>
-          <tr>
-            <th class="col-lg-2">顔写真</th>
-            <td><%= f.attachment_field :face_photo %></td>
-          </tr>
-          <tr>
-            <th>名前</th>
-            <td><%= f.text_field :name, autofocus: true%></td>
-          </tr>
-          <tr>
-            <th>ドライバー歴</th>
-            <td><%= f.text_field :career, autofocus: true, autocomplete: "career", placeholder: "（例） 10" %></td>
-          </tr>
-          <tr>
-            <th>営業所</th>
-            <td><%= f.collection_select :sales_office_id, SalesOffice.all, :id, :sales_office_name, :prompt => "選択してください"%></td>
-          </tr>
-          <tr>
-            <th>メールアドレス</th>
-            <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-          </tr>
-          <tr>
-            <th>パスワード  </th>
-            <td><%= f.password_field :password, autocomplete: "new-password", placeholder: "６桁以上で入力してください" %></td>
-          </tr>
-          <tr>
-            <th></th>
-            <td><%= f.submit "ドライバー登録" , class: 'btn btn-primary sign_up_botton' %></td>
-          </tr>
-        </tbody>
-      </table>
-    <% end %>
+      <h2 class="sign_title">ドライバー登録</h2>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <th class="col-lg-2">顔写真</th>
+              <td><%= f.attachment_field :face_photo %></td>
+            </tr>
+            <tr>
+              <th>名前</th>
+              <td><%= f.text_field :name, autofocus: true%></td>
+            </tr>
+            <tr>
+              <th>ドライバー歴</th>
+              <td><%= f.text_field :career, autofocus: true, autocomplete: "career", placeholder: "（例） 10" %></td>
+            </tr>
+            <tr>
+              <th>営業所</th>
+              <td><%= f.collection_select :sales_office_id, SalesOffice.all, :id, :sales_office_name, :prompt => "選択してください"%></td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+            </tr>
+            <tr>
+              <th>パスワード  </th>
+              <td><%= f.password_field :password, autocomplete: "new-password", placeholder: "６桁以上で入力してください" %></td>
+            </tr>
+            <tr>
+              <th></th>
+              <td><%= f.submit "ドライバー登録" , class: 'btn btn-primary sign_up_botton' %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
     </div>
   </div>
 </div>

@@ -15,13 +15,13 @@
     <header>
 
     <% if enduser_signed_in? %>
-    <div class="app_title"><h1><%= link_to "宅配マスター", root_path , id: :title_logo %></h1></div>
+       <div class="app_title"><h1><%= link_to "宅配マスター", root_path , id: :title_logo %></h1></div>
     <% elsif sales_office_signed_in? %>
-    <div class="app_title"><h1><%= link_to "宅配マスター", admins_homes_path, id: :title_logo %></h1></div>
+       <div class="app_title"><h1><%= link_to "宅配マスター", admins_homes_path, id: :title_logo %></h1></div>
     <% elsif delivery_person_signed_in? %>
-    <div class="app_title"><h1><%= link_to "宅配マスター", new_drivers_delivery_path, id: :title_logo %></h1></div>
+       <div class="app_title"><h1><%= link_to "宅配マスター", new_drivers_delivery_path, id: :title_logo %></h1></div>
     <% else %>
-    <div class="app_title"><h1><%= link_to "宅配マスター", root_path , id: :title_logo %></h1></div>
+       <div class="app_title"><h1><%= link_to "宅配マスター", root_path , id: :title_logo %></h1></div>
     <% end %>
 
     <% if enduser_signed_in? %>

@@ -3,30 +3,30 @@
   <div class="row">
     <div class="col col-lg-2"></div>
     <div class="col col-lg-8">
-    <h2 class="sign_title">営業所登録</h2>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-      <table class="table table-borderless">
-        <tbody>
-          <tr>
-            <th class="col-lg-2">営業所名</th>
-            <td><%= f.text_field :sales_office_name, autofocus: true, autocomplete: "sales_office_name" %></td>
-          </tr>
-          <tr>
-            <th>メールアドレス</th>
-            <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-          </tr>
-          <tr>
-            <th>パスワード</th>
-            <td><%= f.password_field :password, autocomplete: "new-password" ,placeholder:"６桁以上で入力してください" %></td>
-          </tr>
-          <tr>
-            <th></th>
-            <td><%= f.submit "営業所登録", class: 'btn btn-primary sign_up_botton' %></td>
-          </tr>
-        </tbody>
-      </table>
-    <% end %>
+      <h2 class="sign_title">営業所登録</h2>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <th class="col-lg-2">営業所名</th>
+              <td><%= f.text_field :sales_office_name, autofocus: true, autocomplete: "sales_office_name" %></td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+            </tr>
+            <tr>
+              <th>パスワード</th>
+              <td><%= f.password_field :password, autocomplete: "new-password" ,placeholder:"６桁以上で入力してください" %></td>
+            </tr>
+            <tr>
+              <th></th>
+              <td><%= f.submit "営業所登録", class: 'btn btn-primary sign_up_botton' %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
     </div>
   </div>
 </div>
