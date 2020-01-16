@@ -9,8 +9,10 @@ class Publics::EndusersController < Publics::ApplicationController
         redirect_to enduser_path(current_enduser.id)
       end
   	packages = Package.where(phone_number: @enduser.phone_number)
+    @deliveries = []
   	packages.each do |a|
-  		@deliveries = Delivery.where(package_id: a.id).page(params[:page]).order(created_at: "DESC")
+  		delivery = Delivery.find_by(package_id: a.id)
+      @deliveries << delivery
   	end
   end
 
@@ -40,3 +42,4 @@ private
     params.require(:enduser).permit(:email, :name, :postcode, :address, :phone_number)
   end
 end
+

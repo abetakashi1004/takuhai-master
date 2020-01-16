@@ -113,17 +113,17 @@
 				      <div class="modal-body">
 				      	<div class="form">
 					      	<%= form_for(@redelivery) do |a| %>
-					      	<h4>日付を選択してください</h3>
+					      	<h4 class="select-title">日付を選択してください</h4>
 					      	<%= a.date_field :delivery_date %><br>
 					      	<%= a.hidden_field :package_id, value: f.package.id %>
-					      	<h4>時間帯を選択してください</h3>
+					      	<h4 class="select-title">時間帯を選択してください</h4>
 					      	<% @time_zones.each do |t| %>
 					      		<label class="btn-warning decision_time_zone ">
 					      			<%= a.radio_button :time_zone_id, t.id %>
 					      			<%= t.time_zone %>
 				      			</label><br>
 					      	<% end %>
-							<%= a.submit "再配達を依頼する" , class:"btn btn-primary" %>
+							<%= a.submit "再配達を依頼する" , class:"btn btn-primary redelivery-button" %>
 					      	<% end %>
 				      	</div>
 				      </div>
@@ -165,7 +165,6 @@
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 				<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 			    <% end %> <!-- eachの終わり -->
-				<%= paginate @deliveries, class: "paginate" %>
 			</div>
 		</div>
 	<% else %>
